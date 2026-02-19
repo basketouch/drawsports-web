@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="shortcut icon" type="image/png" href="logo.png">
+    
+    <!-- SEO Meta Tags -->
+    <title>DrawSports - Videoanálisis Táctico para iPad | Análisis de Video Deportivo</title>
+    <meta name="description" content="DrawSports: La pizarra táctica definitiva para iPad. Analiza, dibuja y corrige al instante. Herramienta profesional de videoanálisis para entrenadores de baloncesto, fútbol y más deportes.">
+    <meta name="keywords" content="DrawSports, videoanálisis, análisis táctico, iPad, entrenador, baloncesto, fútbol, pizarra táctica, Apple Pencil, análisis de video deportivo">
+    <meta name="author" content="Jorge Lorenzo - Basketouch Solutions Spain">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://drawsports.app/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drawsports.app/">
+    <meta property="og:title" content="DrawSports - Videoanálisis Táctico para iPad">
+    <meta property="og:description" content="La pizarra táctica definitiva para iPad. Analiza, dibuja y corrige al instante. Olvídate de la edición de vídeo compleja. Tecnología de Selección Nacional en tu iPad. Creado por Jorge Lorenzo, campeón del Mundo 2019 y Eurobasket 2022.">
+    <meta property="og:image" content="https://drawsports.app/imagen1.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DrawSports - Aplicación de videoanálisis táctico para entrenadores">
+    <meta property="og:site_name" content="DrawSports">
+    <meta property="og:locale" content="es_ES">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://drawsports.app/">
+    <meta name="twitter:title" content="DrawSports - Videoanálisis Táctico para iPad">
+    <meta name="twitter:description" content="La pizarra táctica definitiva para iPad. Analiza, dibuja y corrige al instante. Tecnología de Selección Nacional en tu iPad. Creado por Jorge Lorenzo.">
+    <meta name="twitter:image" content="https://drawsports.app/imagen1.png">
+    <meta name="twitter:image:alt" content="DrawSports - Aplicación de videoanálisis táctico para entrenadores">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DrawSports",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "iPadOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": "1"
+      },
+      "description": "DrawSports: La pizarra táctica definitiva para iPad. Analiza, dibuja y corrige al instante. Herramienta profesional de videoanálisis para entrenadores.",
+      "screenshot": "https://drawsports.app/logo.png",
+      "author": {
+        "@type": "Person",
+        "name": "Jorge Lorenzo",
+        "jobTitle": "Fundador",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Basketouch Solutions Spain"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Basketouch Solutions Spain",
+        "url": "https://basketouch.com"
+      }
+    }
+    </script>
+    <style>
+        /* --- ESTILOS GENERALES (CSS) --- */
+        :root {
+            --primary: #FF1744; /* Rojo-naranja neón corporativo */
+            --neon-red: #FF1744; /* Rojo neón */
+            --bg-dark: #1a0f0f; /* Fondo oscuro rojizo (cancha) */
+            --bg-card: #2a1f1f; /* Tarjetas con tono rojizo */
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- SELECTOR DE IDIOMA --- */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-selector a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-selector a:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 6px 15px rgba(255, 23, 68, 0.4);
+        }
+
+        .language-selector a.active {
+            border-color: var(--primary);
+            background: rgba(255, 23, 68, 0.2);
+        }
+
+        /* --- HEADER PEQUEÑO --- */
+        .top-header {
+            background: var(--bg-card);
+            padding: 10px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            text-align: center;
+            padding: 100px 0 10px;
+        }
+
+        .logo-container {
+            margin: 40px auto 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 22%; /* Esquinas redondeadas estilo App Store */
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .app-store-badge {
+            display: inline-block;
+            line-height: 0;
+            transition: opacity 0.2s;
+        }
+
+        .app-store-badge:hover {
+            opacity: 0.9;
+        }
+
+        .app-store-badge img {
+            height: 40px;
+            width: auto;
+        }
+
+        .hero-trial {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 15px;
+            margin-bottom: 0;
+        }
+
+        /* --- VÍDEO --- */
+        .video-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- MULTIDEPORTE --- */
+        .multideporte-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .multideporte-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .multideporte-icon {
+            font-size: 2.5rem;
+            opacity: 0.6;
+        }
+
+        .multideporte-title {
+            font-size: 1.5rem;
+            margin: 0 0 15px 0;
+            color: var(--text-main);
+        }
+
+        .multideporte-title strong {
+            color: var(--primary);
+        }
+
+        .multideporte-text {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 15px;
+            line-height: 1.7;
+        }
+
+        .multideporte-tagline {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        /* --- EL ORIGEN --- */
+        .origen-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 23, 68, 0.08) 50%, transparent 100%);
+        }
+
+        .origen-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin: 0 0 30px 0;
+            font-weight: 600;
+        }
+
+        .origen-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .origen-photo {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- FINAL CTA --- */
+        .final-cta-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .final-cta-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0 0 25px 0;
+            color: var(--text-main);
+        }
+
+        .final-cta-btn {
+            display: inline-flex;
+        }
+
+        /* --- GANCHO / HOOK --- */
+        .hook-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .hook-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
+
+        .hook-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .hook-content .video-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .hook-text {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 700px;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        /* --- MOCKUP VIDEO/IMAGEN --- */
+        .app-showcase {
+            margin: 10px 0 0 0;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            width: 100%;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* --- FALDÓN ROJO CON IMÁGENES --- */
+        .red-banner {
+            background-color: var(--primary);
+            padding: 60px 20px;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .images-gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-image:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- CARACTERÍSTICAS --- */
+        .features {
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .feature-card strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h3 { margin-top: 0; }
+
+        /* --- SECCIÓN DE DEPORTES --- */
+        .sports-section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .sports-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
+
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .sport-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sport-icon {
+            font-size: 4rem;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .sport-item:hover .sport-icon {
+            transform: scale(1.1);
+        }
+
+        .sport-name {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .sports-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sports-section {
+                padding: 50px 20px;
+            }
+            .sports-section h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .sport-icon {
+                font-size: 3rem;
+            }
+            .sports-description {
+                font-size: 1rem;
+            }
+        }
+
+        /* --- SECCIÓN DE AUTORIDAD --- */
+        .authority-section {
+            background: var(--bg-card);
+            padding: 60px 40px;
+            margin: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .authority-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .authority-photo {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        .authority-header {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .authority-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .authority-content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-main) !important;
+            margin-bottom: 30px;
+        }
+
+        .authority-content-text p {
+            margin-bottom: 20px;
+            color: var(--text-main) !important;
+        }
+
+        .authority-content-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .authority-content-text strong {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .community-link {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .community-link a {
+            background-color: transparent;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .community-link a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+
+        /* --- PRICING --- */
+        .pricing-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-card);
+            margin: 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .pricing-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- TAGLINE --- */
+        .tagline-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: var(--bg-card);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 0;
+        }
+        
+        footer a { color: var(--primary); text-decoration: none; }
+
+        /* --- STICKY CTA MÓVIL --- */
+        .sticky-cta {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(26, 15, 15, 0.98);
+            padding: 12px 20px;
+            text-align: center;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sticky-cta img {
+            height: 36px;
+            width: auto;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1200px) {
+            .features {
+                padding: 60px 30px;
+            }
+            .authority-content {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 50px 30px;
+                gap: 25px;
+            }
+            .feature-card {
+                padding: 30px;
+            }
+            .app-showcase {
+                margin: 15px 0;
+                padding: 0 15px;
+            }
+            header {
+                padding: 50px 0 15px;
+            }
+            .authority-content {
+                grid-template-columns: 280px 1fr;
+                gap: 30px;
+            }
+            .red-banner {
+                padding: 50px 20px;
+            }
+            .images-gallery {
+                gap: 25px;
+            }
+            .sports-section {
+                padding: 50px 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .app-showcase {
+                margin: 10px 0;
+                padding: 0 10px;
+            }
+            .video-container {
+                max-width: 100%;
+            }
+            header {
+                padding: 40px 0 10px;
+            }
+            .authority-content {
+                grid-template-columns: 200px 1fr;
+                gap: 25px;
+            }
+            .authority-header h2 {
+                font-size: 2rem;
+            }
+            .authority-content-text {
+                font-size: 1rem;
+            }
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 40px 20px;
+                gap: 20px;
+            }
+            .feature-card {
+                padding: 25px;
+            }
+            .red-banner {
+                padding: 40px 15px;
+            }
+            .images-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            .authority-section {
+                padding: 50px 25px;
+            }
+            .sports-section {
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sticky-cta {
+                display: block;
+            }
+            body {
+                padding-bottom: 60px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .language-selector {
+                top: 10px;
+                right: 10px;
+            }
+            .language-selector a {
+                width: 35px;
+                height: 35px;
+                font-size: 1.3rem;
+            }
+            .container {
+                padding: 0 15px;
+            }
+            h1 { 
+                font-size: 2rem; 
+                line-height: 1.2;
+            }
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            .hero-buttons { 
+                flex-direction: column; 
+                gap: 12px;
+            }
+            .btn { 
+                width: 100%; 
+                justify-content: center; 
+                box-sizing: border-box;
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+            .logo-container { 
+                width: 100px; 
+                height: 100px; 
+                margin-bottom: 15px;
+            }
+            .red-banner { 
+                padding: 30px 15px; 
+            }
+            .images-gallery { 
+                grid-template-columns: 1fr; 
+                gap: 20px; 
+            }
+            .gallery-image {
+                max-width: 100%;
+            }
+            .features {
+                grid-template-columns: 1fr;
+                padding: 40px 15px;
+                gap: 20px;
+            }
+            .feature-card {
+                padding: 25px 20px;
+            }
+            .app-showcase {
+                margin: 10px 0;
+                padding: 0 10px;
+            }
+            header {
+                padding: 30px 0 10px;
+            }
+            .authority-section {
+                padding: 40px 15px;
+                margin: 40px 0;
+            }
+            .authority-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .authority-photo {
+                max-width: 250px;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .authority-header {
+                text-align: center;
+            }
+            .authority-header h2 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            .authority-content-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .authority-content-text p {
+                margin-bottom: 15px;
+            }
+            .community-link {
+                text-align: center;
+            }
+            .community-link a {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+            footer {
+                padding: 40px 15px;
+                font-size: 0.9rem;
+            }
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
+            }
+            .btn {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+            .feature-card {
+                padding: 20px 15px;
+            }
+            .authority-header h2 {
+                font-size: 1.5rem;
+            }
+            .authority-content-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="language-selector">
+        <a href="/" class="active" title="Español">🇪🇸</a>
+        <a href="/en" title="English">🇺🇸</a>
+    </div>
+
+    <header class="container hero-section">
+        <div class="logo-container">
+            <img src="logo.png" alt="DrawSports - Aplicación de videoanálisis táctico para iPad" />
+        </div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; letter-spacing: 2px;">DrawSports</div>
+        <h1>Transforma tu iPad en una Sala de Videoanálisis Profesional</h1>
+        <p class="subtitle">Más rápido. Más claro. La herramienta definitiva para entrenadores exigentes.</p>
+        
+        <div class="hero-buttons">
+            <a href="https://apps.apple.com/es/app/drawsports/id6756434573" class="app-store-badge" id="hero-cta">
+                <img src="app-store-badge-es.svg" alt="Descargar en App Store" height="40" />
+            </a>
+        </div>
+    </header>
+
+    <section class="video-section">
+        <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/1154969310?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="DrawSports - Presentación"></iframe>
+        </div>
+    </section>
+
+    <section class="authority-section">
+        <div class="authority-content">
+            <div>
+                <img src="jorge-lorenzo.jpg" alt="Jorge Lorenzo - Campeón del Mundo 2019 y de Europa 2022" class="authority-photo" />
+            </div>
+            <div>
+                <div class="authority-header">
+                    <h2>Diseñada desde la experiencia de la Élite.</h2>
+                </div>
+                <div class="authority-content-text">
+                    <p>Soy <strong>Jorge Lorenzo</strong>, entrenador ayudante de la Selección Española con Sergio Scariolo durante más de 7 años. He creado DrawSports para solucionar los problemas reales que enfrentamos en Mundiales, Eurobaskets y Juegos Olímpicos. Una herramienta hecha por entrenadores, para entrenadores.</p>
+                </div>
+                <div class="community-link">
+                    <a href="https://www.skool.com/jorge-lorenzo-coach/about" target="_blank" rel="noopener noreferrer">
+                        <span>💡</span> Únete a mi comunidad de entrenadores y llevemos tu análisis al siguiente nivel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="multideporte-section">
+        <div class="multideporte-icons">
+            <span class="multideporte-icon">🏀</span>
+            <span class="multideporte-icon">⚽</span>
+            <span class="multideporte-icon">🏐</span>
+            <span class="multideporte-icon">🤾</span>
+        </div>
+        <h3 class="multideporte-title">La lógica del alto rendimiento, para <strong>CUALQUIER</strong> deporte.</h3>
+        <p class="multideporte-text">Aunque vengo del baloncesto, el análisis visual es universal. DrawSports incluye pistas y campos oficiales de Fútbol Sala, Balonmano, Voleibol, Hockey y más. Si usas vídeo para mejorar, esta es tu app.</p>
+        <p class="multideporte-tagline">Adaptable a tu disciplina: Pistas y campos configurables.</p>
+    </section>
+
+    <section class="red-banner">
+        <div class="images-gallery">
+            <img src="imagen1.png" alt="DrawSports - Pizarra táctica para análisis de jugadas en iPad" class="gallery-image" />
+            <img src="imagen2.png" alt="DrawSports - Análisis de video con herramientas de dibujo profesional" class="gallery-image" />
+            <img src="imagen3.png" alt="DrawSports - Sistema de marcas y timeline para videoanálisis deportivo" class="gallery-image" />
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <span class="icon">⚡️</span>
+            <h3>Videoanálisis Rápido</h3>
+            <p><strong>Importa desde iCloud, Drive o USB</strong> y empieza en segundos. Marca los cortes mientras ves el partido: <strong>cada acción se convierte en un clip automáticamente</strong>. Y con el historial inteligente, <strong>retoma tu trabajo donde lo dejaste</strong> sin perder tiempo buscando.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">❄️</span>
+            <h3>El Efecto "Freeze Frame"</h3>
+            <p>No solo dibujes: explica. <strong>Usa la lupa</strong> para el detalle o crea un Freeze Frame: <strong>congela la imagen</strong>, dibuja la corrección táctica y decide exactamente cuántos segundos dura esa pausa. Convierte un vídeo en una lección.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📋</span>
+            <h3>Pizarra Táctica Pro</h3>
+            <p>Diseña jugadas y conceptos <strong>sin necesidad de vídeo</strong>. Alterna entre el <strong>Modo Libreta</strong> para notas rápidas o utiliza las <strong>Pistas Oficiales</strong> para tener el contexto real de la cancha en tus explicaciones.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">🚀</span>
+            <h3>Proyecta y Comparte</h3>
+            <p>En la sala de vídeo: <strong>conecta a la TV</strong> y mantén el <strong>control total</strong> (velocidad, frame a frame). ¿Para enviar? Exporta clips sueltos o una secuencia completa, elige si incluyes audio o dibujos, y <strong>mándalo por WhatsApp o AirDrop al instante</strong>.</p>
+        </div>
+    </section>
+
+    <section class="final-cta-section">
+        <p class="final-cta-text">¿Listo para profesionalizar tu análisis?</p>
+        <a href="https://apps.apple.com/es/app/drawsports/id6756434573" class="btn btn-primary final-cta-btn">Descargar Gratis</a>
+    </section>
+
+    <section class="pricing-section">
+        <p class="pricing-text">Descarga gratuita con 7 días de prueba. Luego, elige el plan que mejor se adapte a tu temporada.</p>
+    </section>
+
+    <section class="origen-section">
+        <h2 class="origen-title">Nacida de la máxima exigencia.</h2>
+        <div class="origen-gallery">
+            <img src="origen1.jpg" alt="Jorge Lorenzo en el banquillo - Selección Española" class="origen-photo" />
+            <img src="origen2.jpg" alt="Jorge Lorenzo en competición de élite" class="origen-photo" />
+        </div>
+    </section>
+
+    <section class="tagline-section">
+        <p class="tagline">Más rápido, más inteligente con DrawSports.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DrawSports. Basketouch Solutions Spain SL.</p>
+        <p>
+            <a href="https://basketouch.com/privacy-policy" target="_blank" rel="noopener noreferrer">Política de Privacidad</a> | <a href="mailto:info@basketouch.com">Soporte</a> | <a href="https://bio.jorgelorenzo.coach/" target="_blank" rel="noopener noreferrer">Sobre mí</a>
+        </p>
+    </footer>
+
+    <a href="https://apps.apple.com/es/app/drawsports/id6756434573" class="sticky-cta" id="sticky-cta" aria-label="Descargar en App Store">
+        <img src="app-store-badge-es.svg" alt="Descargar en App Store" height="36" />
+    </a>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+</html>
