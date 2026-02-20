@@ -10,6 +10,7 @@
     <style>
         :root {
             --primary: #FF1744;
+            --neon-red: #FF1744;
             --bg-dark: #1a0f0f;
             --bg-card: #2a1f1f;
             --text-main: #ffffff;
@@ -17,123 +18,299 @@
         }
         * { box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: var(--bg-dark);
+            background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        .nav { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        .nav a:hover { color: var(--primary); }
-        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main); font-weight: bold; }
-        .logo img { width: 40px; height: 40px; border-radius: 22%; }
-        .lang { display: flex; gap: 8px; }
-        .lang a {
-            padding: 6px 12px;
-            border-radius: 20px;
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Nav igual que drawsports.app */
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 50px;
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: var(--text-muted);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: var(--text-main);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
-        .lang a:hover, .lang a.active { border-color: var(--primary); color: var(--primary); }
+        .back-link:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 6px 15px rgba(255, 23, 68, 0.4);
+        }
+        .back-link img { width: 24px; height: 24px; border-radius: 22%; }
+        
+        .top-nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .lang-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .lang-btn:hover, .lang-btn.active {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        .lang-btn.active { background: rgba(255, 23, 68, 0.2); }
+        
+        .login-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: var(--primary);
+            color: white !important;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+        }
+        
+        /* Hero */
         .hero {
             text-align: center;
-            padding: 60px 20px 50px;
+            padding: 100px 20px 60px;
         }
-        .hero h1 { font-size: 2.5rem; margin: 0 0 15px 0; line-height: 1.2; }
-        .hero .subtitle { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
-        .badge {
+        .logo-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border-radius: 22%;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: var(--bg-card);
+        }
+        .logo-container img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-badge {
             display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 8px 18px;
+            border-radius: 50px;
             background: rgba(255, 23, 68, 0.2);
-            border: 1px solid var(--primary);
+            border: 2px solid var(--primary);
             color: var(--primary);
             font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            padding: 40px 0 50px;
+        .hero h1 {
+            font-size: 2.8rem;
+            margin: 0 0 15px 0;
+            line-height: 1.15;
         }
-        .feature {
-            text-align: center;
-            padding: 25px 20px;
-            background: var(--bg-card);
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.08);
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
         }
-        .feature-icon { font-size: 2rem; margin-bottom: 12px; }
-        .feature h3 { font-size: 1.1rem; margin: 0 0 8px 0; }
-        .feature p { font-size: 0.9rem; color: var(--text-muted); margin: 0; }
-        .plans-title {
-            text-align: center;
-            font-size: 1.8rem;
-            margin: 0 0 40px 0;
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-        .plans {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 25px;
-            padding: 0 0 60px;
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
-        .plan {
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .btn-secondary:hover { border-color: var(--primary); transform: translateY(-2px); }
+        
+        /* Usuarios existentes - destacado */
+        .existing-users {
             background: var(--bg-card);
             border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 35px 25px;
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin: 50px auto 60px;
+            max-width: 500px;
             text-align: center;
-            transition: all 0.3s;
         }
-        .plan:hover {
-            border-color: var(--primary);
-            box-shadow: 0 8px 30px rgba(255, 23, 68, 0.2);
+        .existing-users p {
+            margin: 0 0 15px 0;
+            color: var(--text-muted);
+            font-size: 1rem;
         }
-        .plan-users { font-size: 2rem; font-weight: bold; margin: 0 0 5px 0; }
-        .plan-users span { font-size: 1rem; font-weight: normal; color: var(--text-muted); }
-        .plan-price { font-size: 1.8rem; color: var(--primary); font-weight: bold; margin: 0 0 5px 0; }
-        .plan-period { font-size: 0.85rem; color: var(--text-muted); margin: 0 0 25px 0; }
-        .plan-btn {
-            display: block;
-            padding: 14px 24px;
+        .existing-users .login-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
             border-radius: 50px;
             background: var(--primary);
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+        .existing-users .login-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+        }
+        
+        /* Imagen app - como en main */
+        .app-preview {
+            max-width: 900px;
+            margin: 0 auto 50px;
             text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .app-preview img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            object-fit: contain;
+        }
+        
+        /* Features - mismo estilo que main */
+        .features {
+            padding: 60px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: var(--bg-card);
+            padding: 35px 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .feature-card .icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+        .feature-card h3 { margin: 0 0 10px 0; font-size: 1.2rem; }
+        .feature-card p { margin: 0; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+        .feature-card strong { color: var(--primary); }
+        
+        /* Planes */
+        .plans-section {
+            padding: 60px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 23, 68, 0.06) 50%, transparent 100%);
+        }
+        .plans-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 0 0 15px 0;
+        }
+        .plans-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin: 0 0 45px 0;
+            font-size: 1.05rem;
+        }
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .plan {
+            background: var(--bg-card);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .plan:hover {
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(255, 23, 68, 0.25);
+            transform: translateY(-4px);
+        }
+        .plan-users { font-size: 2.2rem; font-weight: bold; margin: 0 0 5px 0; }
+        .plan-users span { font-size: 1rem; font-weight: normal; color: var(--text-muted); }
+        .plan-price { font-size: 2rem; color: var(--primary); font-weight: bold; margin: 0 0 5px 0; }
+        .plan-period { font-size: 0.9rem; color: var(--text-muted); margin: 0 0 30px 0; }
+        .plan-btn {
+            display: block;
+            padding: 16px 28px;
+            border-radius: 50px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.05rem;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
         }
         .plan-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
         }
+        
+        /* Soporte */
         .support-section {
-            background: linear-gradient(180deg, transparent 0%, rgba(255, 23, 68, 0.08) 50%, transparent 100%);
-            padding: 50px 20px 60px;
+            padding: 60px 20px;
             text-align: center;
         }
         .support-title { font-size: 1.6rem; margin: 0 0 15px 0; }
         .support-text {
-            font-size: 1.05rem;
             color: var(--text-muted);
             max-width: 550px;
             margin: 0 auto 25px;
             line-height: 1.7;
+            font-size: 1.05rem;
         }
         .support-email {
             display: inline-flex;
@@ -154,59 +331,97 @@
             color: white;
             transform: translateY(-2px);
         }
-        .footer {
+        
+        /* Footer - igual que main */
+        footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             color: var(--text-muted);
-            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.95rem;
         }
-        .footer a { color: var(--primary); text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
+        footer a { color: var(--primary); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hero .subtitle { font-size: 1.05rem; }
+            .back-link, .top-nav { top: 12px; }
+            .back-link { left: 12px; padding: 8px 14px; font-size: 0.85rem; }
+            .top-nav { right: 12px; gap: 8px; }
+            .login-btn { padding: 8px 16px; font-size: 0.9rem; }
+            .features { grid-template-columns: 1fr; padding: 40px 15px; }
+            .plans { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
+    <a href="../" class="back-link">
+        <img src="../imagenes/logo.png" alt="">
+        DrawSports
+    </a>
+    
+    <div class="top-nav">
+        <a href="index.html" class="lang-btn active" title="Español">🇪🇸</a>
+        <a href="en/index.html" class="lang-btn" title="English">🇺🇸</a>
+        <a href="https://panel.drawsports.app/es" class="login-btn" target="_blank" rel="noopener noreferrer">
+            Acceder
+        </a>
+    </div>
+
+    <section class="hero">
+        <div class="logo-container">
+            <img src="../imagenes/logo.png" alt="DrawSports PRO">
+        </div>
+        <span class="hero-badge">Para equipos y clubes</span>
+        <h1>DrawSports PRO</h1>
+        <p class="subtitle">Licencias múltiples para tu equipo. Videoanálisis táctico profesional en iPad. Cada entrenador con su cuenta, un administrador central.</p>
+        <div class="hero-buttons">
+            <a href="#planes" class="btn btn-primary">Ver planes</a>
+            <a href="https://panel.drawsports.app/es" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Ya tengo PRO → Acceder</a>
+        </div>
+    </section>
+
     <div class="container">
-        <nav class="nav">
-            <a href="../" class="logo">
-                <img src="../imagenes/logo.png" alt="DrawSports">
-                DrawSports
+        <div class="existing-users">
+            <p><strong>¿Ya tienes licencia PRO?</strong></p>
+            <p>Accede al panel para gestionar tu equipo, invitaciones y licencias.</p>
+            <a href="https://panel.drawsports.app/es" class="login-link" target="_blank" rel="noopener noreferrer">
+                Entrar al panel PRO
             </a>
-            <div class="lang">
-                <a href="index.html" class="active">ES</a>
-                <a href="en/index.html">EN</a>
-            </div>
-        </nav>
+        </div>
+    </div>
 
-        <section class="hero">
-            <span class="badge">Para equipos y clubes</span>
-            <h1>DrawSports PRO</h1>
-            <p class="subtitle">Licencias múltiples para tu equipo. Videoanálisis táctico profesional en iPad. Cada entrenador con su propia cuenta, un solo administrador.</p>
-        </section>
+    <section class="app-preview">
+        <img src="../imagenes/imagen1.png" alt="DrawSports - Pizarra táctica para equipos">
+    </section>
 
-        <section class="features">
-            <div class="feature">
-                <div class="feature-icon">📹</div>
-                <h3>Videoanálisis ilimitado</h3>
-                <p>Analiza partidos y entrenamientos sin límites</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">✏️</div>
-                <h3>Pizarra táctica</h3>
-                <p>Dibuja y corrige con Apple Pencil</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">📤</div>
-                <h3>Exportación y proyección</h3>
-                <p>Comparte análisis con tu equipo</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">👥</div>
-                <h3>Gestión centralizada</h3>
-                <p>Un admin invita y gestiona licencias</p>
-            </div>
-        </section>
+    <section class="features">
+        <div class="feature-card">
+            <span class="icon">📹</span>
+            <h3>Videoanálisis ilimitado</h3>
+            <p><strong>Analiza partidos y entrenamientos</strong> sin límites. Cada usuario con su historial y proyectos.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">✏️</span>
+            <h3>Pizarra táctica</h3>
+            <p><strong>Dibuja y corrige</strong> con Apple Pencil. Pistas oficiales de baloncesto, fútbol sala y más.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📤</span>
+            <h3>Exporta y comparte</h3>
+            <p><strong>Proyecta en la sala</strong> o exporta clips. WhatsApp, AirDrop, proyección TV.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">👥</span>
+            <h3>Gestión centralizada</h3>
+            <p><strong>Un admin</strong> invita, gestiona licencias y controla el equipo desde el panel web.</p>
+        </div>
+    </section>
 
+    <section class="plans-section" id="planes">
         <h2 class="plans-title">Elige tu plan</h2>
+        <p class="plans-subtitle">Suscripción anual. Paga una vez al año, sin sorpresas.</p>
         <div class="plans">
             <div class="plan">
                 <p class="plan-users">3 <span>usuarios</span></p>
@@ -227,17 +442,21 @@
                 <a href="https://drawsports.lemonsqueezy.com/checkout/buy/1e8a160e-d39e-424a-819c-bce00a7aee85?discount=0" class="plan-btn" target="_blank" rel="noopener noreferrer">Comprar</a>
             </div>
         </div>
+    </section>
 
-        <section class="support-section">
-            <h2 class="support-title">¿Necesitas ayuda o un plan a medida?</h2>
-            <p class="support-text">Nuestro equipo te acompaña en todo el proceso. Consultas técnicas, facturación o planes para más de 10 usuarios: escríbenos.</p>
-            <a href="mailto:info@basketouch.com" class="support-email">info@basketouch.com</a>
-        </section>
+    <section class="support-section">
+        <h2 class="support-title">¿Necesitas ayuda o un plan a medida?</h2>
+        <p class="support-text">Consultas técnicas, facturación o planes para más de 10 usuarios. Nuestro equipo te acompaña.</p>
+        <a href="mailto:info@basketouch.com" class="support-email">info@basketouch.com</a>
+    </section>
 
-        <footer class="footer">
-            <p>© 2026 DrawSports. Basketouch Solutions Spain SL.</p>
-            <p><a href="../">Volver a drawsports.app</a> · <a href="https://panel.drawsports.app/es">Panel PRO</a></p>
-        </footer>
-    </div>
+    <footer>
+        <p>© 2026 DrawSports. Basketouch Solutions Spain SL.</p>
+        <p>
+            <a href="../">Volver a drawsports.app</a> · 
+            <a href="https://panel.drawsports.app/es">Panel PRO</a> · 
+            <a href="mailto:info@basketouch.com">Soporte</a>
+        </p>
+    </footer>
 </body>
 </html>
