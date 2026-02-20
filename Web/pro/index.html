@@ -173,52 +173,33 @@
         }
         .btn-secondary:hover { border-color: var(--primary); transform: translateY(-2px); }
         
-        /* Usuarios existentes - destacado */
-        .existing-users {
-            background: var(--bg-card);
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 25px 30px;
-            margin: 50px auto 60px;
-            max-width: 500px;
-            text-align: center;
-        }
-        .existing-users p {
-            margin: 0 0 15px 0;
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-        .existing-users .login-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            border-radius: 50px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.2s;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
-        }
-        .existing-users .login-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
-        }
-        
-        /* Imagen app - como en main */
-        .app-preview {
-            max-width: 900px;
-            margin: 0 auto 50px;
-            text-align: center;
-        }
-        .app-preview img {
+        .red-banner {
+            background-color: var(--primary);
+            padding: 60px 20px;
+            margin: 0;
             width: 100%;
-            max-width: 500px;
+            box-sizing: border-box;
+        }
+        .images-gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: center;
+        }
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            display: block;
             border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
             object-fit: contain;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .gallery-image:hover {
+            transform: translateY(-5px);
         }
         
         /* Features - mismo estilo que main */
@@ -350,6 +331,7 @@
             .back-link { left: 12px; padding: 8px 14px; font-size: 0.85rem; }
             .top-nav { right: 12px; gap: 8px; }
             .login-btn { padding: 8px 16px; font-size: 0.9rem; }
+            .images-gallery { grid-template-columns: 1fr; gap: 20px; }
             .features { grid-template-columns: 1fr; padding: 40px 15px; }
             .plans { grid-template-columns: 1fr; }
         }
@@ -364,7 +346,7 @@
     <div class="top-nav">
         <a href="index.html" class="lang-btn active" title="Español">🇪🇸</a>
         <a href="en/index.html" class="lang-btn" title="English">🇺🇸</a>
-        <a href="https://panel.drawsports.app/es" class="login-btn" target="_blank" rel="noopener noreferrer">
+        <a href="https://panel.drawsports.app/es" class="login-btn">
             Acceder
         </a>
     </div>
@@ -378,22 +360,16 @@
         <p class="subtitle">Licencias múltiples para tu equipo. Videoanálisis táctico profesional en iPad. Cada entrenador con su cuenta, un administrador central.</p>
         <div class="hero-buttons">
             <a href="#planes" class="btn btn-primary">Ver planes</a>
-            <a href="https://panel.drawsports.app/es" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Ya tengo PRO → Acceder</a>
+            <a href="https://panel.drawsports.app/es" class="btn btn-secondary">Ya tengo PRO → Acceder</a>
         </div>
     </section>
 
-    <div class="container">
-        <div class="existing-users">
-            <p><strong>¿Ya tienes licencia PRO?</strong></p>
-            <p>Accede al panel para gestionar tu equipo, invitaciones y licencias.</p>
-            <a href="https://panel.drawsports.app/es" class="login-link" target="_blank" rel="noopener noreferrer">
-                Entrar al panel PRO
-            </a>
+    <section class="red-banner">
+        <div class="images-gallery">
+            <img src="../imagenes/imagen1.png" alt="DrawSports - Pizarra táctica para equipos" class="gallery-image">
+            <img src="../imagenes/imagen2.png" alt="DrawSports - Análisis de video con herramientas de dibujo" class="gallery-image">
+            <img src="../imagenes/imagen3.png" alt="DrawSports - Sistema de marcas y timeline" class="gallery-image">
         </div>
-    </div>
-
-    <section class="app-preview">
-        <img src="../imagenes/imagen1.png" alt="DrawSports - Pizarra táctica para equipos">
     </section>
 
     <section class="features">
@@ -427,19 +403,19 @@
                 <p class="plan-users">3 <span>usuarios</span></p>
                 <p class="plan-price">285€</p>
                 <p class="plan-period">Suscripción anual</p>
-                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/20b3dbf7-1e21-482c-8d0b-4faa63033097?discount=0" class="plan-btn" target="_blank" rel="noopener noreferrer">Comprar</a>
+                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/20b3dbf7-1e21-482c-8d0b-4faa63033097?discount=0" class="plan-btn">Comprar</a>
             </div>
             <div class="plan">
                 <p class="plan-users">5 <span>usuarios</span></p>
                 <p class="plan-price">450€</p>
                 <p class="plan-period">Suscripción anual</p>
-                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/13aa906b-7bfa-4c4a-ad15-f8802bd56691?discount=0" class="plan-btn" target="_blank" rel="noopener noreferrer">Comprar</a>
+                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/13aa906b-7bfa-4c4a-ad15-f8802bd56691?discount=0" class="plan-btn">Comprar</a>
             </div>
             <div class="plan">
                 <p class="plan-users">10 <span>usuarios</span></p>
                 <p class="plan-price">850€</p>
                 <p class="plan-period">Suscripción anual</p>
-                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/1e8a160e-d39e-424a-819c-bce00a7aee85?discount=0" class="plan-btn" target="_blank" rel="noopener noreferrer">Comprar</a>
+                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/1e8a160e-d39e-424a-819c-bce00a7aee85?discount=0" class="plan-btn">Comprar</a>
             </div>
         </div>
     </section>
