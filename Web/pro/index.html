@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../imagenes/logo.png">
     <title>DrawSports PRO para equipos | Licencias múltiples para clubes</title>
-    <meta name="description" content="DrawSports PRO para equipos y clubes. Licencias para 3, 5 o 10 usuarios. Videoanálisis táctico profesional para iPad. Soporte dedicado.">
+    <meta name="description" content="DrawSports PRO para equipos y clubes. Licencias para 3, 5 usuarios o plan a medida. Videoanálisis táctico profesional para iPad. Soporte dedicado.">
     <link rel="canonical" href="https://drawsports.app/pro/">
     <style>
         :root {
@@ -279,6 +279,18 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
         }
+        .plan-custom { border-color: rgba(255, 23, 68, 0.3); }
+        .plan-price-custom { font-size: 1.4rem; }
+        .plan-btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        .plan-btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
         
         /* Soporte */
         .support-section {
@@ -346,9 +358,6 @@
     <div class="top-nav">
         <a href="index.html" class="lang-btn active" title="Español">🇪🇸</a>
         <a href="en/index.html" class="lang-btn" title="English">🇺🇸</a>
-        <a href="https://panel.drawsports.app/es/login" class="login-btn">
-            Acceder
-        </a>
     </div>
 
     <section class="hero">
@@ -360,7 +369,6 @@
         <p class="subtitle">Licencias múltiples para tu equipo. Videoanálisis táctico profesional en iPad. Cada entrenador con su cuenta, un administrador central.</p>
         <div class="hero-buttons">
             <a href="#planes" class="btn btn-primary">Ver planes</a>
-            <a href="https://panel.drawsports.app/es/login" class="btn btn-secondary">Ya tengo PRO → Acceder</a>
         </div>
     </section>
 
@@ -411,18 +419,18 @@
                 <p class="plan-period">Suscripción anual</p>
                 <a href="https://drawsports.lemonsqueezy.com/checkout/buy/13aa906b-7bfa-4c4a-ad15-f8802bd56691?discount=0" class="plan-btn">Comprar</a>
             </div>
-            <div class="plan">
-                <p class="plan-users">10 <span>usuarios</span></p>
-                <p class="plan-price">850€</p>
-                <p class="plan-period">Suscripción anual</p>
-                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/1e8a160e-d39e-424a-819c-bce00a7aee85?discount=0" class="plan-btn">Comprar</a>
+            <div class="plan plan-custom">
+                <p class="plan-users">Plan a medida</p>
+                <p class="plan-price plan-price-custom">A consultar</p>
+                <p class="plan-period">Más de 5 usuarios. Licencias personalizadas por negociación.</p>
+                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%20Plan%20a%20medida" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Contactar</a>
             </div>
         </div>
     </section>
 
     <section class="support-section">
         <h2 class="support-title">¿Necesitas ayuda o un plan a medida?</h2>
-        <p class="support-text">Consultas técnicas, facturación o planes para más de 10 usuarios. Nuestro equipo te acompaña.</p>
+        <p class="support-text">Consultas técnicas, facturación o planes a medida. Nuestro equipo te acompaña.</p>
         <a href="mailto:info@basketouch.com" class="support-email">info@basketouch.com</a>
     </section>
 

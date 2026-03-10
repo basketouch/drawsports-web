@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../../imagenes/logo.png">
     <title>DrawSports PRO for teams | Multi-user licenses for clubs</title>
-    <meta name="description" content="DrawSports PRO for teams and clubs. Licenses for 3, 5 or 10 users. Professional tactical video analysis for iPad. Dedicated support.">
+    <meta name="description" content="DrawSports PRO for teams and clubs. Licenses for 3, 5 users or custom plan. Professional tactical video analysis for iPad. Dedicated support.">
     <link rel="canonical" href="https://drawsports.app/pro/en/">
     <style>
         :root {
@@ -275,6 +275,18 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
         }
+        .plan-custom { border-color: rgba(255, 23, 68, 0.3); }
+        .plan-price-custom { font-size: 1.4rem; }
+        .plan-btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        .plan-btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
         
         .support-section {
             padding: 60px 20px;
@@ -340,9 +352,6 @@
     <div class="top-nav">
         <a href="../index.html" class="lang-btn" title="Español">🇪🇸</a>
         <a href="index.html" class="lang-btn active" title="English">🇺🇸</a>
-        <a href="https://panel.drawsports.app/en/login" class="login-btn">
-            Sign in
-        </a>
     </div>
 
     <section class="hero">
@@ -354,7 +363,6 @@
         <p class="subtitle">Multi-user licenses for your team. Professional tactical video analysis on iPad. Each coach with their own account, one central admin.</p>
         <div class="hero-buttons">
             <a href="#plans" class="btn btn-primary">View plans</a>
-            <a href="https://panel.drawsports.app/en/login" class="btn btn-secondary">I have PRO → Sign in</a>
         </div>
     </section>
 
@@ -405,18 +413,18 @@
                 <p class="plan-period">Annual subscription</p>
                 <a href="https://drawsports.lemonsqueezy.com/checkout/buy/13aa906b-7bfa-4c4a-ad15-f8802bd56691?discount=0" class="plan-btn">Buy</a>
             </div>
-            <div class="plan">
-                <p class="plan-users">10 <span>users</span></p>
-                <p class="plan-price">850€</p>
-                <p class="plan-period">Annual subscription</p>
-                <a href="https://drawsports.lemonsqueezy.com/checkout/buy/1e8a160e-d39e-424a-819c-bce00a7aee85?discount=0" class="plan-btn">Buy</a>
+            <div class="plan plan-custom">
+                <p class="plan-users">Custom plan</p>
+                <p class="plan-price plan-price-custom">On request</p>
+                <p class="plan-period">6+ users. Custom licenses by negotiation.</p>
+                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%20Custom%20plan" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Contact</a>
             </div>
         </div>
     </section>
 
     <section class="support-section">
         <h2 class="support-title">Need help or a custom plan?</h2>
-        <p class="support-text">Technical questions, billing or plans for more than 10 users. Our team supports you.</p>
+        <p class="support-text">Technical questions, billing or custom plans. Our team supports you.</p>
         <a href="mailto:info@basketouch.com" class="support-email">info@basketouch.com</a>
     </section>
 
