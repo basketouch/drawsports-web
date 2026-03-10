@@ -288,6 +288,54 @@
             color: white;
         }
         
+        .plan-custom-block {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(255, 23, 68, 0.08) 0%, rgba(255, 23, 68, 0.02) 100%);
+            border: 2px solid rgba(255, 23, 68, 0.4);
+            border-radius: 20px;
+            padding: 40px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+        .plan-custom-block:hover {
+            border-color: rgba(255, 23, 68, 0.6);
+            box-shadow: 0 12px 40px rgba(255, 23, 68, 0.15);
+        }
+        .plan-custom-content { flex: 1; min-width: 200px; }
+        .plan-custom-block .plan-custom-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .plan-custom-block .plan-custom-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0 0 8px 0;
+        }
+        .plan-custom-block .plan-custom-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+        .plan-custom-block .plan-btn-outline {
+            flex-shrink: 0;
+            padding: 18px 36px;
+            font-size: 1.1rem;
+        }
+        @media (max-width: 768px) {
+            .plan-custom-block {
+                flex-direction: column;
+                text-align: center;
+                padding: 35px 25px;
+            }
+        }
+        
         .support-section {
             padding: 60px 20px;
             text-align: center;
@@ -422,10 +470,12 @@
                 <p class="plan-period">Annual subscription</p>
                 <a href="https://drawsports.lemonsqueezy.com/checkout/buy/13aa906b-7bfa-4c4a-ad15-f8802bd56691?discount=0" class="plan-btn" target="_blank" rel="noopener noreferrer">Buy</a>
             </div>
-            <div class="plan plan-custom">
-                <p class="plan-users">Custom plan</p>
-                <p class="plan-price plan-price-custom">On request</p>
-                <p class="plan-period">6+ licenses. Custom pricing by negotiation.</p>
+            <div class="plan plan-custom plan-custom-block">
+                <div class="plan-custom-content">
+                    <span class="plan-custom-icon">💬</span>
+                    <h3 class="plan-custom-title">Custom plan</h3>
+                    <p class="plan-custom-desc">6+ licenses. Custom pricing based on your club or federation needs.</p>
+                </div>
                 <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%20Custom%20plan" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Contact</a>
             </div>
         </div>
