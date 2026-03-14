@@ -1,0 +1,24 @@
+---
+description: DrawSports - Identificación y propósito de cada rama
+alwaysApply: true
+---
+
+# Ramas de DrawSports
+
+## Propósito de cada rama
+
+| Rama | Propósito |
+|------|-----------|
+| `main` | Publicación. Versión estable en App Store. |
+| `3.0` | Mejoras pre-publicación. Desarrollo antes de publicar. |
+| `vision-tv` | Proyección. Funcionalidad de proyección en TV. |
+| `whiteboard` | Mejora de la pizarra. Desarrollo de la pizarra táctica. |
+| `feature/drawsports-pro-auth` | DrawSports PRO. Versión B2B con autenticación Supabase. |
+
+## Resumen
+
+- **main** → Publicación
+- **3.0** → Pre-publicación
+- **vision-tv** → Proyección
+- **whiteboard** → Pizarra
+- **feature/drawsports-pro-auth** → PRO (B2B)

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../logo.png">
+    <link rel="apple-touch-icon" href="../logo.png">
+    <link rel="shortcut icon" type="image/png" href="../logo.png">
+    
+    <!-- SEO Meta Tags -->
+    <title>DrawSports - Tactical Video Analysis for iPad | Sports Video Analysis</title>
+    <meta name="description" content="DrawSports: The ultimate tactical whiteboard for iPad. Analyze, draw, and correct instantly. Professional video analysis tool for basketball, soccer, and more sports coaches.">
+    <meta name="keywords" content="DrawSports, video analysis, tactical analysis, iPad, coach, basketball, soccer, tactical whiteboard, Apple Pencil, sports video analysis">
+    <meta name="author" content="Jorge Lorenzo - Basketouch Solutions Spain">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://drawsports.app/en/">
+    <link rel="alternate" hreflang="es" href="https://drawsports.app/" />
+    <link rel="alternate" hreflang="en" href="https://drawsports.app/en/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://drawsports.app/en/">
+    <meta property="og:title" content="DrawSports - Tactical Video Analysis for iPad">
+    <meta property="og:description" content="The ultimate tactical whiteboard for iPad. Analyze, draw, and correct instantly. Forget complex video editing. National Team technology on your iPad. Created by Jorge Lorenzo, World Champion 2019 and EuroBasket 2022.">
+    <meta property="og:image" content="https://drawsports.app/imagen1.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DrawSports - Tactical video analysis app for coaches">
+    <meta property="og:site_name" content="DrawSports">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://drawsports.app/en/">
+    <meta name="twitter:title" content="DrawSports - Tactical Video Analysis for iPad">
+    <meta name="twitter:description" content="The ultimate tactical whiteboard for iPad. Analyze, draw, and correct instantly. National Team technology on your iPad. Created by Jorge Lorenzo.">
+    <meta name="twitter:image" content="https://drawsports.app/imagen1.png">
+    <meta name="twitter:image:alt" content="DrawSports - Tactical video analysis app for coaches">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "DrawSports",
+      "applicationCategory": "SportsApplication",
+      "operatingSystem": "iPadOS",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "ratingCount": "1"
+      },
+      "description": "DrawSports: The ultimate tactical whiteboard for iPad. Analyze, draw, and correct instantly. Professional video analysis tool for coaches.",
+      "screenshot": "https://drawsports.app/logo.png",
+      "author": {
+        "@type": "Person",
+        "name": "Jorge Lorenzo",
+        "jobTitle": "Founder",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Basketouch Solutions Spain"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Basketouch Solutions Spain",
+        "url": "https://basketouch.com"
+      }
+    }
+    </script>
+    <style>
+        /* --- ESTILOS GENERALES (CSS) --- */
+        :root {
+            --primary: #FF1744; /* Rojo-naranja neón corporativo */
+            --neon-red: #FF1744; /* Rojo neón */
+            --bg-dark: #1a0f0f; /* Fondo oscuro rojizo (cancha) */
+            --bg-card: #2a1f1f; /* Tarjetas con tono rojizo */
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* --- SELECTOR DE IDIOMA --- */
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+        }
+
+        .language-selector a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .language-selector a:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 6px 15px rgba(255, 23, 68, 0.4);
+        }
+
+        .language-selector a.active {
+            border-color: var(--primary);
+            background: rgba(255, 23, 68, 0.2);
+        }
+
+        /* --- HEADER PEQUEÑO --- */
+        .top-header {
+            background: var(--bg-card);
+            padding: 10px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            text-align: center;
+            padding: 100px 0 10px;
+        }
+
+        .logo-container {
+            margin: 40px auto 15px;
+            width: 120px;
+            height: 120px;
+            border-radius: 22%; /* Esquinas redondeadas estilo App Store */
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            background: var(--bg-card);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 8px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* --- MOCKUP VIDEO/IMAGEN --- */
+        .app-showcase {
+            margin: 10px 0 0 0;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* --- FALDÓN ROJO CON IMÁGENES --- */
+        .red-banner {
+            background-color: var(--primary);
+            padding: 60px 20px;
+            margin: 0;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .images-gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-image:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- CARACTERÍSTICAS --- */
+        .features {
+            padding: 60px 40px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h3 { margin-top: 0; }
+
+        /* --- SECCIÓN DE DEPORTES --- */
+        .sports-section {
+            padding: 60px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .sports-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--text-main);
+        }
+
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .sport-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .sport-icon {
+            font-size: 4rem;
+            display: block;
+            transition: transform 0.3s;
+        }
+
+        .sport-item:hover .sport-icon {
+            transform: scale(1.1);
+        }
+
+        .sport-name {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .sports-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1024px) {
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sports-section {
+                padding: 50px 20px;
+            }
+            .sports-section h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .sport-icon {
+                font-size: 3rem;
+            }
+            .sports-description {
+                font-size: 1rem;
+            }
+        }
+
+        /* --- SECCIÓN DE AUTORIDAD --- */
+        .authority-section {
+            background: var(--bg-card);
+            padding: 60px 40px;
+            margin: 60px 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .authority-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .authority-photo {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        .authority-header {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+
+        .authority-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .authority-content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-main) !important;
+            margin-bottom: 30px;
+        }
+
+        .authority-content-text p {
+            margin-bottom: 20px;
+            color: var(--text-main) !important;
+        }
+
+        .authority-content-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .authority-content-text strong {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .community-link {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .community-link a {
+            background-color: transparent;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .community-link a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+
+        /* --- TAGLINE --- */
+        .tagline-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 23, 68, 0.08) 50%, transparent 100%);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 0;
+        }
+        
+        footer a { color: var(--primary); text-decoration: none; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1200px) {
+            .features {
+                padding: 60px 30px;
+            }
+            .authority-content {
+                max-width: 100%;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 50px 30px;
+                gap: 25px;
+            }
+            .feature-card {
+                padding: 30px;
+            }
+            .app-showcase {
+                margin: 15px 0;
+                padding: 0 15px;
+            }
+            header {
+                padding: 50px 0 15px;
+            }
+            .authority-content {
+                grid-template-columns: 280px 1fr;
+                gap: 30px;
+            }
+            .red-banner {
+                padding: 50px 20px;
+            }
+            .images-gallery {
+                gap: 25px;
+            }
+            .sports-section {
+                padding: 50px 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            .app-showcase {
+                margin: 10px 0;
+                padding: 0 10px;
+            }
+            .video-container {
+                max-width: 100%;
+            }
+            header {
+                padding: 40px 0 10px;
+            }
+            .authority-content {
+                grid-template-columns: 200px 1fr;
+                gap: 25px;
+            }
+            .authority-header h2 {
+                font-size: 2rem;
+            }
+            .authority-content-text {
+                font-size: 1rem;
+            }
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 40px 20px;
+                gap: 20px;
+            }
+            .feature-card {
+                padding: 25px;
+            }
+            .red-banner {
+                padding: 40px 15px;
+            }
+            .images-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            .authority-section {
+                padding: 50px 25px;
+            }
+            .sports-section {
+                padding: 40px 20px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .language-selector {
+                top: 10px;
+                right: 10px;
+            }
+            .language-selector a {
+                width: 35px;
+                height: 35px;
+                font-size: 1.3rem;
+            }
+            .container {
+                padding: 0 15px;
+            }
+            h1 { 
+                font-size: 2rem; 
+                line-height: 1.2;
+            }
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            .hero-buttons { 
+                flex-direction: column; 
+                gap: 12px;
+            }
+            .btn { 
+                width: 100%; 
+                justify-content: center; 
+                box-sizing: border-box;
+                padding: 14px 25px;
+                font-size: 1rem;
+            }
+            .logo-container { 
+                width: 100px; 
+                height: 100px; 
+                margin-bottom: 15px;
+            }
+            .red-banner { 
+                padding: 30px 15px; 
+            }
+            .images-gallery { 
+                grid-template-columns: 1fr; 
+                gap: 20px; 
+            }
+            .gallery-image {
+                max-width: 100%;
+            }
+            .features {
+                grid-template-columns: 1fr;
+                padding: 40px 15px;
+                gap: 20px;
+            }
+            .feature-card {
+                padding: 25px 20px;
+            }
+            .app-showcase {
+                margin: 10px 0;
+                padding: 0 10px;
+            }
+            .construction-overlay {
+                padding: 10px;
+            }
+            .under-construction {
+                padding: 60px 20px;
+            }
+            .under-construction h2 {
+                font-size: 2rem;
+            }
+            .under-construction p {
+                font-size: 1rem;
+            }
+            .construction-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            header {
+                padding: 30px 0 10px;
+            }
+            .authority-section {
+                padding: 40px 15px;
+                margin: 40px 0;
+            }
+            .authority-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .authority-photo {
+                max-width: 250px;
+                width: 100%;
+                margin: 0 auto;
+            }
+            .authority-header {
+                text-align: center;
+            }
+            .authority-header h2 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            .authority-content-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+            .authority-content-text p {
+                margin-bottom: 15px;
+            }
+            .community-link {
+                text-align: center;
+            }
+            .community-link a {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+            footer {
+                padding: 40px 15px;
+                font-size: 0.9rem;
+            }
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            .btn {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+            .feature-card {
+                padding: 20px 15px;
+            }
+            .authority-header h2 {
+                font-size: 1.5rem;
+            }
+            .authority-content-text {
+                font-size: 0.9rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="language-selector">
+        <a href="/" title="Español">🇪🇸</a>
+        <a href="/en" class="active" title="English">🇺🇸</a>
+    </div>
+
+    <header class="container">
+        <div class="logo-container">
+            <img src="../logo.png" alt="DrawSports - Tactical video analysis app for iPad" />
+        </div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary); margin-bottom: 15px; letter-spacing: 2px;">DrawSports</div>
+        <h1>The Ultimate Tactical Whiteboard for iPad</h1>
+        <p class="subtitle">Analyze, draw, and correct instantly. Forget complex video editing. Your players will understand the message at first glance.</p>
+        
+        <div class="hero-buttons">
+            <a href="https://apps.apple.com/es/app/drawsports/id6756434573" class="btn btn-primary">
+                <span> Download on App Store</span>
+            </a>
+            <a href="javascript:void(0)" onclick="document.querySelector('.app-showcase').scrollIntoView({behavior: 'smooth'}); return false;" class="btn btn-secondary">
+                <span>▶ See how it works</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="app-showcase">
+        <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/1154969310?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="1. Presentacion"></iframe>
+        </div>
+    </section>
+
+    <section class="sports-section">
+        <h2>DrawSports works for any sport</h2>
+        <div class="sports-grid">
+            <div class="sport-item">
+                <span class="sport-icon">🏀</span>
+                <span class="sport-name">Basketball</span>
+            </div>
+            <div class="sport-item">
+                <span class="sport-icon">⚽</span>
+                <span class="sport-name">Football / Soccer</span>
+            </div>
+            <div class="sport-item">
+                <span class="sport-icon">🤾</span>
+                <span class="sport-name">Handball</span>
+            </div>
+            <div class="sport-item">
+                <span class="sport-icon">🏐</span>
+                <span class="sport-name">Futsal / Volleyball</span>
+            </div>
+        </div>
+        <p class="sports-description">DrawSports is designed for any sport where video analysis and decision-making matter.</p>
+    </section>
+
+    <section class="red-banner">
+        <div class="images-gallery">
+            <img src="../imagen1.png" alt="DrawSports - Tactical whiteboard for play analysis on iPad" class="gallery-image" />
+            <img src="../imagen2.png" alt="DrawSports - Video analysis with professional drawing tools" class="gallery-image" />
+            <img src="../imagen3.png" alt="DrawSports - Marking system and timeline for sports video analysis" class="gallery-image" />
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <span class="icon">🎥</span>
+            <h3>Quick Video Analysis</h3>
+            <p>Import from Photos, Files or USB and start working in seconds. Mark key moments while watching the game: each action automatically becomes a clip ready to review. Plus, smart history remembers your last sessions so you never waste time searching.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">✏️</span>
+            <h3>Draw and "Freeze Frame"</h3>
+            <p>Draw on the video to point out spaces and trajectories, or use the zoom to see every detail. Take your analysis to the next level with Freeze Frame: adjust the cut, freeze the image to explain the tactic, and decide exactly how many seconds that pause lasts in playback.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📋</span>
+            <h3>Tactical Whiteboard</h3>
+            <p>Design plays without needing video. Use notebook mode for quick notes and sketches, or select official court models for different sports. Full real court context to prepare your games or timeouts with clarity.</p>
+        </div>
+        <div class="feature-card">
+            <span class="icon">📤</span>
+            <h3>Project and Export</h3>
+            <p>In the video room, connect to the TV and keep total control of speed and frame by frame. To share, export loose clips or full sequences, choosing whether to include audio, titles or drawings. Optimized to send via WhatsApp or AirDrop in seconds.</p>
+        </div>
+    </section>
+
+    <section class="authority-section">
+        <div class="authority-content">
+            <div>
+                <img src="../jorge-lorenzo.jpg" alt="Jorge Lorenzo - World Champion 2019 and European Champion 2022" class="authority-photo" />
+            </div>
+            
+            <div>
+                <div class="authority-header">
+                    <h2>Behind DrawSports</h2>
+                </div>
+                
+                <div class="authority-content-text">
+                    <p>I'm <strong>Jorge Lorenzo</strong>. I've spent my entire life seeking continuous improvement, whether in a neighborhood gym or in a World Championship final.</p>
+                    
+                    <p>After participating in 2 Olympic Games, 2 World Championships and 2 EuroBaskets, winning Gold at the 2019 World Championship and EuroBasket 2022 with Spain, and founding Basketouch Solutions Spain, I realized something: <strong>coaches need agile tools</strong>.</p>
+                    
+                    <p style="color: var(--text-main); font-weight: bold;">DrawSports is the result of that experience: National Team technology, on your iPad.</p>
+                </div>
+                
+                <div class="community-link">
+                    <a href="https://www.skool.com/jorge-lorenzo-coach/about" target="_blank" rel="noopener noreferrer">
+                        <span>💡</span> Join my coaches community and let's take your analysis to the next level
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tagline-section">
+        <p class="tagline">Faster, smarter with DrawSports</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 DrawSports. Created by Basketouch Solutions Spain.</p>
+        <p>
+            <a href="https://basketouch.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> | <a href="mailto:info@basketouch.com">Support</a> | <a href="https://bio.jorgelorenzo.coach/" target="_blank" rel="noopener noreferrer">About me</a>
+        </p>
+    </footer>
+
+    <script src="https://player.vimeo.com/api/player.js"></script>
+</body>
+</html>

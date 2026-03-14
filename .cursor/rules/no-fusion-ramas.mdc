@@ -1,0 +1,27 @@
+---
+description: DrawSports - NO fusionar ramas. Mantener app pública y PRO separadas.
+alwaysApply: true
+---
+
+# No fusionar ramas
+
+**Regla crítica**: Las ramas de DrawSports **NUNCA** se fusionan entre sí.
+
+## Estructura
+
+| Rama | Versión | Uso |
+|------|---------|-----|
+| `main` / `3.0` | DrawSports (pública) | App Store, usuarios finales |
+| `feature/drawsports-pro-auth` | DrawSports PRO | B2B, clubes, venta directa |
+
+## Prohibido
+
+- **NO** hacer `git merge` de `feature/drawsports-pro-auth` → `main` o `3.0`
+- **NO** hacer `git merge` de `main` o `3.0` → `feature/drawsports-pro-auth`
+- **NO** hacer Pull Request entre estas ramas
+
+## Permitido
+
+- Trabajar en cada rama por separado
+- Si necesitas traer un cambio específico: usar `cherry-pick` o copiar manualmente
+- Cada versión evoluciona de forma independiente
