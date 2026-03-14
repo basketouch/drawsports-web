@@ -157,7 +157,7 @@
             border-radius: 16px;
             padding: 25px 35px;
             max-width: 500px;
-            margin: 0 auto 35px;
+            margin: 25px auto 0;
             font-size: 1.05rem;
             color: var(--text-main);
             line-height: 1.7;
@@ -201,16 +201,39 @@
             .login-btn { padding: 8px 16px; font-size: 0.9rem; }
         }
         .brevo-form-wrapper { margin-top: 20px; }
+        /* Brevo form: tema oscuro PRO */
+        .brevo-form-wrapper .sib-form { background: transparent !important; }
+        .brevo-form-wrapper #sib-container {
+            background-color: var(--bg-card) !important;
+            border-color: rgba(255, 23, 68, 0.4) !important;
+            border-width: 2px !important;
+        }
+        .brevo-form-wrapper #sib-container .sib-form-block p,
+        .brevo-form-wrapper #sib-container .entry__label { color: var(--text-main) !important; }
+        .brevo-form-wrapper #sib-container .entry__specification { display: none; }
+        .brevo-form-wrapper #sib-container .input {
+            background: var(--bg-dark) !important;
+            border-color: rgba(255,255,255,0.2) !important;
+            color: var(--text-main) !important;
+        }
+        .brevo-form-wrapper #sib-container .input::placeholder { color: var(--text-muted) !important; }
+        .brevo-form-wrapper #sib-form-container .sib-form-block__button {
+            background-color: var(--primary) !important;
+            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+        }
+        .brevo-form-wrapper #sib-form-container .sib-form-block__button:hover {
+            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+        }
     </style>
     <!-- Brevo Form styles -->
     <style>
         @font-face { font-display: block; font-family: Roboto; src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff"); }
         @font-face { font-display: fallback; font-family: Roboto; font-weight: 600; src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff"); }
         @font-face { font-display: fallback; font-family: Roboto; font-weight: 700; src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff"); }
-        #sib-container input:-ms-input-placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
-        #sib-container input::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
-        #sib-container textarea::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
-        #sib-container a { text-decoration: underline; color: #2BB2FC; }
+        #sib-container input:-ms-input-placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #a0a0a0; }
+        #sib-container input::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #a0a0a0; }
+        #sib-container textarea::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #a0a0a0; }
+        #sib-container a { text-decoration: underline; color: var(--primary); }
     </style>
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
@@ -223,6 +246,7 @@
     <div class="top-nav">
         <a href="../index.html" class="lang-btn" title="Español">🇪🇸</a>
         <a href="index.html" class="lang-btn active" title="English">🇺🇸</a>
+        <a href="../../zh/pro/" class="lang-btn" title="中文">🇨🇳</a>
         <a href="https://panel.drawsports.app/en" class="login-btn">
             Sign in
         </a>
@@ -235,11 +259,8 @@
         <span class="hero-badge">Coming soon</span>
         <h1>DrawSports PRO</h1>
         <p class="subtitle">Licenses for teams and clubs. Professional tactical video analysis on iPad. Each coach with their own account, one central admin.</p>
-        <div class="fomo-text">
-            Something big is coming. <strong>Early birds will get an advantage.</strong> Stay tuned.
-        </div>
         <div class="brevo-form-wrapper">
-            <div class="sib-form" style="text-align: center; background-color: #EFF2F7;">
+            <div class="sib-form" style="text-align: center; background: transparent;">
                 <div id="sib-form-container" class="sib-form-container">
                     <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
                         <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
@@ -259,30 +280,30 @@
                         </div>
                     </div>
                     <div></div>
-                    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
+                    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:var(--bg-card); max-width:540px; border-radius:16px; border-width:2px; border-color:rgba(255,23,68,0.4); border-style:solid; direction:ltr">
                         <form id="sib-form" method="POST" action="https://1e22ccbe.sibforms.com/serve/MUIFACtnKHJsShAjkuxAXFB0Rh0duZev4fgJzx1FrkbNw9U8InIYib3spnnAl4AElMW_W-ovfukw1_roqzt3VXS7OpxibJkOucABlPP0T-adlO93lXRUyuci2N7WFAd8suNRLOqs5nJABfVZkvi16iP1Q9-Vh9-_Zv6HELCedyHtT-oJOiq9fye8v3JjxAzHTYZOFtGfBR21y0i4" data-type="subscription">
                             <div style="padding: 8px 0;">
-                                <div class="sib-form-block" style="font-size:32px; text-align:left; font-weight:700; font-family:Helvetica, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
-                                    <p>DrawSports PRO News</p>
+                                <div class="sib-form-block" style="font-size:1.2rem; text-align:center; font-weight:700; font-family:inherit; color:var(--text-main); background-color:transparent;">
+                                    <p>Be the first to know. We'll notify you when we launch.</p>
                                 </div>
                             </div>
                             <div style="padding: 8px 0;">
                                 <div class="sib-input sib-form-block">
                                     <div class="form__entry entry_block">
                                         <div class="form__label-row ">
-                                            <label class="entry__label" style="font-weight: 700; text-align:left; font-size:16px; font-family:Helvetica, sans-serif; color:#3c4858;" for="EMAIL" data-required="*">Leave your email to receive all the information</label>
+                                            <label class="entry__label" style="font-weight: 600; text-align:center; font-size:1rem; font-family:inherit; color:var(--text-main);" for="EMAIL" data-required="*">Your email</label>
                                             <div class="entry__field">
-                                                <input class="input " type="text" id="EMAIL" name="EMAIL" autocomplete="off" placeholder="EMAIL" data-required="true" required />
+                                                <input class="input " type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="you@email.com" data-required="true" required />
                                             </div>
                                         </div>
                                         <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                                        <label class="entry__specification" style="font-size:12px; text-align:left; font-family:Helvetica, sans-serif; color:#8390A4;">Enter your email address to receive information. E.g.: abc@xyz.com</label>
+                                        <label class="entry__specification" style="display:none;"></label>
                                     </div>
                                 </div>
                             </div>
                             <div style="padding: 8px 0;">
                                 <div class="sib-form-block" style="text-align: left">
-                                    <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:16px; font-weight:700; font-family:Helvetica, sans-serif; color:#FFFFFF; background-color:#3E4857; border-radius:3px; border-width:0px;" form="sib-form" type="submit">
+                                    <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:1rem; font-weight:700; font-family:inherit; color:#FFFFFF; background-color:var(--primary); border-radius:50px; border-width:0; padding:14px 28px;" form="sib-form" type="submit">
                                         <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
                                             <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
                                         </svg>
@@ -296,6 +317,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="fomo-text">
+            Something big is coming. Stay tuned.
         </div>
     </section>
 
