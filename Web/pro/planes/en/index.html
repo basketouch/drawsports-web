@@ -94,6 +94,34 @@
             transform: translateY(-2px);
         }
         .lang-btn.active { background: rgba(255, 23, 68, 0.2); }
+        .lang-desktop { display: flex; gap: 10px; }
+        .lang-mobile { display: none; position: relative; gap: 8px; align-items: center; }
+        .lang-trigger {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--bg-card); border: 2px solid rgba(255,255,255,0.2);
+            color: var(--text-main); font-size: 1.2rem; cursor: pointer; transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .lang-trigger:hover { transform: translateY(-2px); border-color: var(--primary); }
+        .lang-trigger.lang-current { border-color: var(--primary); background: rgba(255, 23, 68, 0.2); }
+        .lang-dropdown {
+            display: none; position: absolute; top: 100%; right: 0; margin-top: 8px;
+            background: var(--bg-card); border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 12px; padding: 8px; min-width: 120px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 1001;
+        }
+        .lang-dropdown.open { display: flex; flex-direction: column; gap: 4px; }
+        .lang-dropdown a {
+            display: flex; align-items: center; gap: 8px; padding: 10px 12px;
+            border-radius: 8px; text-decoration: none; color: var(--text-main);
+            font-size: 1rem; transition: background 0.2s;
+        }
+        .lang-dropdown a:hover { background: rgba(255, 23, 68, 0.2); }
+        @media (max-width: 768px) {
+            .lang-desktop { display: none !important; }
+            .lang-mobile { display: flex !important; }
+        }
         .login-btn {
             display: inline-flex;
             align-items: center;
@@ -400,14 +428,36 @@
         DrawSports
     </a>
     <div class="top-nav">
-        <a href="../index.html" class="lang-btn" title="Español">🇪🇸</a>
-        <a href="index.html" class="lang-btn active" title="English">🇺🇸</a>
-        <a href="../../../zh/pro/planes/" class="lang-btn" title="中文">🇨🇳</a>
-        <a href="../../../ja/pro/planes/" class="lang-btn" title="日本語">🇯🇵</a>
+        <div class="lang-desktop">
+            <a href="../index.html" class="lang-btn" title="Español">🇪🇸</a>
+            <a href="index.html" class="lang-btn active" title="English">🇺🇸</a>
+            <a href="../../../zh/pro/planes/" class="lang-btn" title="中文">🇨🇳</a>
+            <a href="../../../ja/pro/planes/" class="lang-btn" title="日本語">🇯🇵</a>
+        </div>
+        <div class="lang-mobile">
+            <button type="button" class="lang-trigger lang-current" aria-label="Current language">🇺🇸</button>
+            <button type="button" class="lang-trigger lang-globe" aria-label="Change language" aria-expanded="false">🌐</button>
+            <div class="lang-dropdown" id="langDropdown">
+                <a href="../index.html" title="Español">🇪🇸 Español</a>
+                <a href="index.html" title="English">🇺🇸 English</a>
+                <a href="../../../zh/pro/planes/" title="中文">🇨🇳 中文</a>
+                <a href="../../../ja/pro/planes/" title="日本語">🇯🇵 日本語</a>
+            </div>
+        </div>
         <a href="https://panel.drawsports.app/en" class="login-btn">
             Sign in
         </a>
     </div>
+    <script>
+    (function(){
+        var d=document,m=d.querySelector('.lang-mobile'),tr=d.querySelectorAll('.lang-trigger'),dd=d.getElementById('langDropdown');
+        if(!m||!dd)return;
+        function toggle(){dd.classList.toggle('open');tr[1].setAttribute('aria-expanded',dd.classList.contains('open'));}
+        function close(){dd.classList.remove('open');tr[1].setAttribute('aria-expanded','false');}
+        tr[0].addEventListener('click',toggle);tr[1].addEventListener('click',toggle);
+        d.addEventListener('click',function(e){if(!m.contains(e.target))close();});
+    })();
+    </script>
 
     <section class="hero">
         <div class="logo-container">
