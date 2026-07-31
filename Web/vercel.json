@@ -6,6 +6,26 @@
       "has": [{ "type": "host", "value": "www.drawsports.app" }],
       "destination": "https://drawsports.app/:path*",
       "permanent": true
+    },
+    {
+      "source": "/zh",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/zh/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ja",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ja/:path*",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
