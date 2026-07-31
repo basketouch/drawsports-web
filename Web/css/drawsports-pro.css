@@ -1,0 +1,225 @@
+@import url("basketouch-tokens.css");
+@import url("drawsports-site.css");
+
+:root {
+  --primary: var(--accent);
+  --bg-dark: var(--bg);
+  --text-main: var(--text);
+}
+
+/* — PRO landing — */
+.pro-hero {
+  text-align: center;
+  padding: 4rem 1.25rem 3rem;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.pro-hero .logo-container {
+  margin-bottom: 1.25rem;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  background: rgba(184, 30, 36, 0.15);
+  border: 1px solid var(--accent-glow-strong);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.pro-hero h1 {
+  margin: 0 0 1rem;
+  font-family: var(--font-rounded);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  letter-spacing: -0.02em;
+}
+
+.pro-hero .subtitle {
+  max-width: 34rem;
+}
+
+.fomo-text {
+  background: var(--bg-card);
+  border: 1px solid var(--accent-glow-strong);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+  max-width: 32rem;
+  margin: 1.5rem auto 0;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.fomo-text strong {
+  color: var(--accent);
+}
+
+.brevo-form-wrapper {
+  margin-top: 1.25rem;
+  width: 100%;
+  max-width: 540px;
+}
+
+.brevo-form-wrapper .sib-form {
+  background: transparent !important;
+}
+
+.brevo-form-wrapper #sib-container {
+  background-color: var(--bg-card) !important;
+  border-color: var(--accent-glow-strong) !important;
+  border-width: 1px !important;
+  border-radius: var(--radius) !important;
+}
+
+.brevo-form-wrapper #sib-container .sib-form-block p,
+.brevo-form-wrapper #sib-container .entry__label {
+  color: var(--text) !important;
+}
+
+.brevo-form-wrapper #sib-container .entry__specification {
+  display: none;
+}
+
+.brevo-form-wrapper #sib-container .input {
+  background: var(--bg) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+  border-radius: var(--radius-btn) !important;
+}
+
+.brevo-form-wrapper #sib-container .input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.brevo-form-wrapper #sib-form-container .sib-form-block__button {
+  background-color: var(--accent) !important;
+  border-radius: var(--radius-btn) !important;
+}
+
+.brevo-form-wrapper #sib-form-container .sib-form-block__button:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+#sib-container a {
+  color: var(--accent);
+}
+
+/* — Simple content pages (password-updated, seguridad) — */
+.page-centered {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+  text-align: center;
+}
+
+.page-centered h1 {
+  font-family: var(--font-rounded);
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.page-centered p {
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.page-centered .btn {
+  margin-top: 1.25rem;
+  width: auto;
+}
+
+.simple-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.simple-card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  max-width: 28rem;
+  width: 100%;
+  border: 1px solid var(--border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.simple-card .logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  margin: 0 auto 1.25rem;
+  display: block;
+  object-fit: cover;
+}
+
+.simple-card .icon-success {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.simple-card h1 {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-rounded);
+  font-size: 1.5rem;
+}
+
+.simple-card p {
+  color: var(--text-muted);
+  margin: 0 0 1.25rem;
+  line-height: 1.6;
+}
+
+.lang-links {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.lang-links a {
+  color: var(--text-muted);
+}
+
+.lang-links a:hover {
+  color: #fff;
+}
+
+.legal-content {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.legal-content h1 {
+  margin-top: 0;
+  font-family: var(--font-rounded);
+}
+
+.legal-content h2 {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+.legal-content p,
+.legal-content li {
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.legal-content strong {
+  color: var(--text);
+}

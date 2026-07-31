@@ -1,306 +1,240 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../imagenes/logo.png">
-    <title>DrawSports PRO para equipos | Licencias múltiples</title>
-    <meta name="description" content="DrawSports PRO para equipos y clubes. Licencias múltiples, videoanálisis táctico profesional para iPad. Panel central y compra online.">
-    <link rel="canonical" href="https://drawsports.app/pro/">
-    <meta name="robots" content="index, follow">
-    <style>
-        :root {
-            --primary: #FF1744;
-            --neon-red: #FF1744;
-            --bg-dark: #1a0f0f;
-            --bg-card: #2a1f1f;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        .back-link {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 18px;
-            border-radius: 50px;
-            background: var(--bg-card);
-            border: 2px solid rgba(255,255,255,0.2);
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .back-link:hover {
-            transform: translateY(-2px);
-            border-color: var(--primary);
-            box-shadow: 0 6px 15px rgba(255, 23, 68, 0.4);
-        }
-        .back-link img { width: 24px; height: 24px; border-radius: 22%; }
-        
-        .top-nav {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        .lang-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            border: 2px solid rgba(255,255,255,0.2);
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .lang-btn:hover, .lang-btn.active {
-            border-color: var(--primary);
-            transform: translateY(-2px);
-        }
-        .lang-btn.active { background: rgba(255, 23, 68, 0.2); }
-        
-        .lang-desktop { display: flex; gap: 10px; }
-        .lang-mobile { display: none; position: relative; gap: 8px; align-items: center; }
-        .lang-trigger {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border-radius: 50%;
-            background: var(--bg-card); border: 2px solid rgba(255,255,255,0.2);
-            color: var(--text-main); font-size: 1.2rem; cursor: pointer; transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .lang-trigger:hover { transform: translateY(-2px); border-color: var(--primary); }
-        .lang-trigger.lang-current { border-color: var(--primary); background: rgba(255, 23, 68, 0.2); }
-        .lang-dropdown {
-            display: none; position: absolute; top: 100%; right: 0; margin-top: 8px;
-            background: var(--bg-card); border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 12px; padding: 8px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 1001;
-        }
-        .lang-dropdown.open { display: flex; flex-direction: column; gap: 4px; }
-        .lang-dropdown a {
-            display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border-radius: 8px;
-            text-decoration: none; color: var(--text-main);
-            font-size: 1.5rem; transition: background 0.2s;
-        }
-        .lang-dropdown a:hover { background: rgba(255, 23, 68, 0.2); }
-        @media (max-width: 768px) {
-            .lang-desktop { display: none !important; }
-            .lang-mobile { display: flex !important; }
-        }
-        
-        .login-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 50px;
-            background: var(--primary);
-            color: white !important;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
-        }
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
-        }
-        
-        .hero {
-            text-align: center;
-            padding: 120px 20px 80px;
-            min-height: 70vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 25px;
-            border-radius: 22%;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            background: var(--bg-card);
-        }
-        .logo-container img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-badge {
-            display: inline-block;
-            padding: 10px 24px;
-            border-radius: 50px;
-            background: var(--primary);
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.5); }
-            50% { opacity: 0.95; box-shadow: 0 0 20px 5px rgba(255, 23, 68, 0.3); }
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin: 0 0 20px 0;
-            line-height: 1.15;
-        }
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 550px;
-            margin: 0 auto 30px;
-            line-height: 1.7;
-        }
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 28px;
-            max-width: 560px;
-        }
-        .fomo-text {
-            background: var(--bg-card);
-            border: 2px solid rgba(255, 23, 68, 0.3);
-            border-radius: 16px;
-            padding: 25px 35px;
-            max-width: 500px;
-            margin: 25px auto 0;
-            font-size: 1.05rem;
-            color: var(--text-main);
-            line-height: 1.7;
-        }
-        .fomo-text strong { color: var(--primary); }
-        .notify-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
-        }
-        .notify-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.95rem;
-        }
-        footer a { color: var(--primary); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-        
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .hero .subtitle { font-size: 1.05rem; }
-            .back-link, .top-nav { top: 12px; }
-            .back-link { left: 12px; padding: 8px 14px; font-size: 0.85rem; }
-            .top-nav { right: 12px; gap: 8px; }
-            .login-btn { padding: 8px 16px; font-size: 0.9rem; }
-        }
-    </style>
-</head>
-<body>
-    <a href="../" class="back-link">
-        <img src="../imagenes/logo.png" alt="">
-        DrawSports
-    </a>
-    
-    <div class="top-nav">
-        <div class="lang-desktop">
-            <a href="index.html" class="lang-btn active" title="Español">🇪🇸</a>
-            <a href="en/index.html" class="lang-btn" title="English">🇺🇸</a>
-            <a href="../zh/pro/" class="lang-btn" title="中文">🇨🇳</a>
-            <a href="../ja/pro/" class="lang-btn" title="日本語">🇯🇵</a>
-        </div>
-        <div class="lang-mobile">
-            <button type="button" class="lang-trigger lang-current" aria-label="Idioma actual">🇪🇸</button>
-            <button type="button" class="lang-trigger lang-globe" aria-label="Cambiar idioma" aria-expanded="false">🌐</button>
-            <div class="lang-dropdown" id="langDropdown">
-                <a href="index.html" title="Español">🇪🇸</a>
-                <a href="en/index.html" title="English">🇺🇸</a>
-                <a href="../zh/pro/" title="中文">🇨🇳</a>
-                <a href="../ja/pro/" title="日本語">🇯🇵</a>
-            </div>
-        </div>
-        <a href="https://panel.drawsports.app/es" class="login-btn">
-            Acceder
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="../imagenes/logo.png" />
+    <title>DrawSports PRO para equipos | Próximamente</title>
+    <meta
+      name="description"
+      content="DrawSports PRO para equipos y clubes. Licencias múltiples, videoanálisis táctico profesional para iPad. Próximamente."
+    />
+    <link rel="canonical" href="https://drawsports.app/pro/" />
+    <meta name="robots" content="index, follow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/drawsports-pro.css" />
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container-wide">
+        <a class="brand" href="/">
+          <img class="brand-logo" src="../imagenes/logo.png" alt="" width="40" height="40" />
+          <span>DrawSports</span>
         </a>
-    </div>
-    <script>
-    (function(){
-        var d=document,m=d.querySelector('.lang-mobile'),tr=d.querySelectorAll('.lang-trigger'),dd=d.getElementById('langDropdown');
-        if(!m||!dd)return;
-        function toggle(){dd.classList.toggle('open');tr[1].setAttribute('aria-expanded',dd.classList.contains('open'));}
-        function close(){dd.classList.remove('open');tr[1].setAttribute('aria-expanded','false');}
-        tr[0].addEventListener('click',toggle);tr[1].addEventListener('click',toggle);
-        d.addEventListener('click',function(e){if(!m.contains(e.target))close();});
-    })();
-    </script>
+        <nav class="nav">
+          <a href="/pro/" class="is-active">Panel PRO</a>
+          <a href="/pro/" class="is-active">ES</a>
+          <a href="/pro/en/">EN</a>
+          <a href="https://panel.drawsports.app/es">Acceder</a>
+          <a href="mailto:info@basketouch.com">Soporte</a>
+        </nav>
+      </div>
+    </header>
 
-    <section class="hero">
+    <main>
+      <section class="pro-hero">
         <div class="logo-container">
-            <img src="../imagenes/logo.png" alt="DrawSports PRO">
+          <img src="../imagenes/logo.png" alt="DrawSports PRO" />
         </div>
-        <span class="hero-badge">Ya disponible</span>
+        <span class="hero-badge">Próximamente</span>
         <h1>DrawSports PRO</h1>
-        <p class="subtitle">Licencias para equipos y clubes. Videoanálisis táctico profesional en iPad. Cada entrenador con su cuenta, un administrador central.</p>
-        <div class="hero-actions">
-            <a href="planes/" class="notify-cta">Ver planes y precios</a>
-        </div>
-        <div class="fomo-text">
-            Suscripción anual desde <strong>89,99&nbsp;€</strong>. Compra online o <a href="planes/" style="color:var(--primary);">elige tu plan</a>.
-        </div>
-    </section>
-
-    <footer>
-        <p>© 2026 DrawSports. Basketouch Solutions Spain SL.</p>
-        <p>
-            <a href="../">Volver a drawsports.app</a> ·
-            <a href="planes/">Planes y precios</a> ·
-            <a href="mailto:info@basketouch.com">Contacto</a>
+        <p class="subtitle">
+          Licencias para equipos y clubes. Videoanálisis táctico profesional en iPad. Cada
+          entrenador con su cuenta, un administrador central.
         </p>
+        <div class="brevo-form-wrapper">
+          <div class="sib-form" style="text-align: center; background: transparent">
+            <div id="sib-form-container" class="sib-form-container">
+              <div
+                id="error-message"
+                class="sib-form-message-panel"
+                style="
+                  font-size: 16px;
+                  text-align: left;
+                  font-family: inherit;
+                  color: #661d1d;
+                  background-color: #ffeded;
+                  border-radius: 3px;
+                  border-color: #ff4949;
+                  max-width: 540px;
+                "
+              >
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <span class="sib-form-message-panel__inner-text"
+                    >No hemos podido validar su suscripción.</span
+                  >
+                </div>
+              </div>
+              <div></div>
+              <div
+                id="success-message"
+                class="sib-form-message-panel"
+                style="
+                  font-size: 16px;
+                  text-align: left;
+                  font-family: inherit;
+                  color: #085229;
+                  background-color: #e7faf0;
+                  border-radius: 3px;
+                  border-color: #13ce66;
+                  max-width: 540px;
+                "
+              >
+                <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+                  <span class="sib-form-message-panel__inner-text"
+                    >Se ha realizado su suscripción.</span
+                  >
+                </div>
+              </div>
+              <div></div>
+              <div
+                id="sib-container"
+                class="sib-container--large sib-container--vertical"
+                style="
+                  text-align: center;
+                  background-color: var(--bg-card);
+                  max-width: 540px;
+                  border-radius: 14px;
+                  border-width: 1px;
+                  border-color: var(--accent-glow-strong);
+                  border-style: solid;
+                  direction: ltr;
+                "
+              >
+                <form
+                  id="sib-form"
+                  method="POST"
+                  action="https://1e22ccbe.sibforms.com/serve/MUIFACtnKHJsShAjkuxAXFB0Rh0duZev4fgJzx1FrkbNw9U8InIYib3spnnAl4AElMW_W-ovfukw1_roqzt3VXS7OpxibJkOucABlPP0T-adlO93lXRUyuci2N7WFAd8suNRLOqs5nJABfVZkvi16iP1Q9-Vh9-_Zv6HELCedyHtT-oJOiq9fye8v3JjxAzHTYZOFtGfBR21y0i4"
+                  data-type="subscription"
+                >
+                  <div style="padding: 8px 0">
+                    <div
+                      class="sib-form-block"
+                      style="
+                        font-size: 1.2rem;
+                        text-align: center;
+                        font-weight: 700;
+                        font-family: inherit;
+                        color: var(--text);
+                        background-color: transparent;
+                      "
+                    >
+                      <p>Sé el primero en saberlo. Te avisamos cuando lancemos.</p>
+                    </div>
+                  </div>
+                  <div style="padding: 8px 0">
+                    <div class="sib-input sib-form-block">
+                      <div class="form__entry entry_block">
+                        <div class="form__label-row">
+                          <label
+                            class="entry__label"
+                            style="
+                              font-weight: 600;
+                              text-align: center;
+                              font-size: 1rem;
+                              font-family: inherit;
+                              color: var(--text);
+                            "
+                            for="EMAIL"
+                            data-required="*"
+                            >Tu email</label
+                          >
+                          <div class="entry__field">
+                            <input
+                              class="input"
+                              type="email"
+                              id="EMAIL"
+                              name="EMAIL"
+                              autocomplete="email"
+                              placeholder="tu@email.com"
+                              data-required="true"
+                              required
+                            />
+                          </div>
+                        </div>
+                        <label
+                          class="entry__error entry__error--primary"
+                          style="
+                            font-size: 16px;
+                            text-align: left;
+                            font-family: inherit;
+                            color: #661d1d;
+                            background-color: #ffeded;
+                            border-radius: 3px;
+                            border-color: #ff4949;
+                          "
+                        ></label>
+                        <label class="entry__specification" style="display: none"></label>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="padding: 8px 0">
+                    <div class="sib-form-block" style="text-align: left">
+                      <button
+                        class="sib-form-block__button sib-form-block__button-with-loader"
+                        style="
+                          font-size: 1rem;
+                          font-weight: 700;
+                          font-family: inherit;
+                          color: #ffffff;
+                          background-color: var(--accent);
+                          border-radius: 10px;
+                          border-width: 0;
+                          padding: 14px 28px;
+                        "
+                        form="sib-form"
+                        type="submit"
+                      >
+                        AVÍSAME
+                      </button>
+                    </div>
+                  </div>
+                  <input type="text" name="email_address_check" value="" class="input--hidden" />
+                  <input type="hidden" name="locale" value="es" />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fomo-text">Estamos preparando algo grande. Estad atentos.</div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 DrawSports · Basketouch Solutions Spain SL</p>
+        <div class="legal-links">
+          <a href="../">Volver a drawsports.app</a>
+          <a href="mailto:info@basketouch.com">Contacto</a>
+        </div>
+      </div>
     </footer>
-</body>
+
+    <script>
+      window.REQUIRED_CODE_ERROR_MESSAGE = "Elija un código de país";
+      window.LOCALE = "es";
+      window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
+        "La información que ha proporcionado no es válida. Compruebe el formato del campo e inténtelo de nuevo.";
+      window.REQUIRED_ERROR_MESSAGE = "Este campo no puede quedarse vacío.";
+      window.GENERIC_INVALID_MESSAGE =
+        "La información que ha proporcionado no es válida. Compruebe el formato del campo e inténtelo de nuevo.";
+      window.translation = {
+        common: {
+          selectedList: "{quantity} lista seleccionada",
+          selectedLists: "{quantity} listas seleccionadas",
+          selectedOption: "{quantity} seleccionado",
+          selectedOptions: "{quantity} seleccionados",
+        },
+      };
+      var AUTOHIDE = Boolean(0);
+    </script>
+    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+    <script src="/js/site-nav.js"></script>
+  </body>
 </html>

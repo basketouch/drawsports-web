@@ -3,31 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/drawsports-pro.css" />
+
     <link rel="icon" type="image/png" href="../../imagenes/logo.png">
     <title>DrawSports PRO para equipos | Licencias múltiples para clubes</title>
     <meta name="description" content="DrawSports PRO para equipos y clubes. Licencias para 3, 5 usuarios o plan a medida. Videoanálisis táctico profesional para iPad. Soporte dedicado.">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://drawsports.app/pro/planes/">
     <style>
         :root {
-            --primary: #FF1744;
-            --neon-red: #FF1744;
-            --bg-dark: #1a0f0f;
-            --bg-card: #2a1f1f;
+            --primary: #b81e24;
+            --neon-red: #b81e24;
+            --bg-dark: #0c0d10;
+            --bg-card: #14161c;
             --text-main: #ffffff;
-            --text-muted: #a0a0a0;
+            --text-muted: #a1a1aa;
         }
         * { box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--bg-dark);
+            background: radial-gradient(1200px 600px at 50% -10%, rgba(184, 30, 36, 0.18), transparent 60%), var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .preview-badge {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            padding: 8px 14px;
+            background: rgba(0,0,0,0.7);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
         .back-link {
             position: fixed;
             top: 20px;
@@ -37,7 +54,7 @@
             align-items: center;
             gap: 8px;
             padding: 10px 18px;
-            border-radius: 50px;
+            border-radius: 10px;
             background: var(--bg-card);
             border: 2px solid rgba(255,255,255,0.2);
             color: var(--text-main);
@@ -50,7 +67,7 @@
         .back-link:hover {
             transform: translateY(-2px);
             border-color: var(--primary);
-            box-shadow: 0 6px 15px rgba(255, 23, 68, 0.4);
+            box-shadow: 0 6px 15px rgba(184, 30, 36, 0.4);
         }
         .back-link img { width: 24px; height: 24px; border-radius: 22%; }
         .top-nav {
@@ -81,53 +98,24 @@
             border-color: var(--primary);
             transform: translateY(-2px);
         }
-        .lang-btn.active { background: rgba(255, 23, 68, 0.2); }
-        .lang-desktop { display: flex; gap: 10px; }
-        .lang-mobile { display: none; position: relative; gap: 8px; align-items: center; }
-        .lang-trigger {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border-radius: 50%;
-            background: var(--bg-card); border: 2px solid rgba(255,255,255,0.2);
-            color: var(--text-main); font-size: 1.2rem; cursor: pointer; transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-        .lang-trigger:hover { transform: translateY(-2px); border-color: var(--primary); }
-        .lang-trigger.lang-current { border-color: var(--primary); background: rgba(255, 23, 68, 0.2); }
-        .lang-dropdown {
-            display: none; position: absolute; top: 100%; right: 0; margin-top: 8px;
-            background: var(--bg-card); border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 12px; padding: 8px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.4); z-index: 1001;
-        }
-        .lang-dropdown.open { display: flex; flex-direction: column; gap: 4px; }
-        .lang-dropdown a {
-            display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px; border-radius: 8px;
-            text-decoration: none; color: var(--text-main);
-            font-size: 1.5rem; transition: background 0.2s;
-        }
-        .lang-dropdown a:hover { background: rgba(255, 23, 68, 0.2); }
-        @media (max-width: 768px) {
-            .lang-desktop { display: none !important; }
-            .lang-mobile { display: flex !important; }
-        }
+        .lang-btn.active { background: rgba(184, 30, 36, 0.2); }
         .login-btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 10px 20px;
-            border-radius: 50px;
+            border-radius: 10px;
             background: var(--primary);
             color: white !important;
             text-decoration: none;
             font-weight: bold;
             font-size: 0.95rem;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+            box-shadow: 0 4px 15px rgba(184, 30, 36, 0.4);
         }
         .login-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+            box-shadow: 0 6px 20px rgba(184, 30, 36, 0.5);
         }
         .hero {
             text-align: center;
@@ -146,8 +134,8 @@
         .hero-badge {
             display: inline-block;
             padding: 8px 18px;
-            border-radius: 50px;
-            background: rgba(255, 23, 68, 0.2);
+            border-radius: 10px;
+            background: rgba(184, 30, 36, 0.2);
             border: 2px solid var(--primary);
             color: var(--primary);
             font-size: 0.9rem;
@@ -175,7 +163,7 @@
         }
         .btn {
             padding: 15px 30px;
-            border-radius: 50px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.05rem;
@@ -187,9 +175,9 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+            box-shadow: 0 4px 15px rgba(184, 30, 36, 0.4);
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(184, 30, 36, 0.5); }
         .btn-secondary {
             background: rgba(255,255,255,0.1);
             color: white;
@@ -244,7 +232,7 @@
         .feature-card strong { color: var(--primary); }
         .plans-section {
             padding: 60px 20px;
-            background: linear-gradient(180deg, transparent 0%, rgba(255, 23, 68, 0.06) 50%, transparent 100%);
+            background: linear-gradient(180deg, transparent 0%, rgba(184, 30, 36, 0.06) 50%, transparent 100%);
         }
         .plans-title {
             text-align: center;
@@ -274,7 +262,7 @@
         }
         .plan:hover {
             border-color: var(--primary);
-            box-shadow: 0 12px 40px rgba(255, 23, 68, 0.25);
+            box-shadow: 0 12px 40px rgba(184, 30, 36, 0.25);
             transform: translateY(-4px);
         }
         .plan-users { font-size: 2.2rem; font-weight: bold; margin: 0 0 5px 0; }
@@ -284,7 +272,7 @@
         .plan-btn {
             display: block;
             padding: 16px 28px;
-            border-radius: 50px;
+            border-radius: 10px;
             background: var(--primary);
             color: white;
             text-decoration: none;
@@ -292,13 +280,14 @@
             font-size: 1.05rem;
             text-align: center;
             transition: all 0.2s;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
+            box-shadow: 0 4px 15px rgba(184, 30, 36, 0.4);
         }
         .plan-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+            box-shadow: 0 6px 20px rgba(184, 30, 36, 0.5);
         }
-        .plan-custom { border-color: rgba(255, 23, 68, 0.3); }
+        .plan-custom { border-color: rgba(184, 30, 36, 0.3); }
+        .plan-price-custom { font-size: 1.4rem; }
         .plan-btn-outline {
             background: transparent;
             border: 2px solid var(--primary);
@@ -311,8 +300,8 @@
         }
         .plan-custom-block {
             grid-column: 1 / -1;
-            background: linear-gradient(135deg, rgba(255, 23, 68, 0.08) 0%, rgba(255, 23, 68, 0.02) 100%);
-            border: 2px solid rgba(255, 23, 68, 0.4);
+            background: linear-gradient(135deg, rgba(184, 30, 36, 0.08) 0%, rgba(184, 30, 36, 0.02) 100%);
+            border: 2px solid rgba(184, 30, 36, 0.4);
             border-radius: 20px;
             padding: 40px 50px;
             display: flex;
@@ -323,8 +312,8 @@
             text-align: left;
         }
         .plan-custom-block:hover {
-            border-color: rgba(255, 23, 68, 0.6);
-            box-shadow: 0 12px 40px rgba(255, 23, 68, 0.15);
+            border-color: rgba(184, 30, 36, 0.6);
+            box-shadow: 0 12px 40px rgba(184, 30, 36, 0.15);
         }
         .plan-custom-content { flex: 1; min-width: 200px; }
         .plan-custom-block .plan-custom-icon {
@@ -342,7 +331,7 @@
             font-size: 1rem;
             color: var(--text-muted);
             margin: 0;
-            line-height: 1.55;
+            line-height: 1.5;
         }
         .plan-custom-block .plan-btn-outline {
             flex-shrink: 0;
@@ -356,48 +345,36 @@
                 padding: 35px 25px;
             }
         }
-        /* --- NEWSLETTER (Brevo) --- */
-        .newsletter-section {
+        .support-section {
+            padding: 60px 20px;
             text-align: center;
-            padding: 55px 20px 60px;
-            background: var(--bg-dark);
-            border-top: 1px solid rgba(255,255,255,0.08);
         }
-        .newsletter-section h2 {
-            font-size: 1.65rem;
-            margin: 0 0 10px 0;
-            color: var(--text-main);
-            font-weight: 700;
-        }
-        .newsletter-section .newsletter-intro {
+        .support-title { font-size: 1.6rem; margin: 0 0 15px 0; }
+        .support-text {
             color: var(--text-muted);
-            max-width: 520px;
-            margin: 0 auto 24px;
-            line-height: 1.65;
+            max-width: 550px;
+            margin: 0 auto 25px;
+            line-height: 1.7;
             font-size: 1.05rem;
         }
-        .brevo-form-wrapper { margin: 0 auto; max-width: 560px; }
-        .brevo-form-wrapper .sib-form { background: transparent !important; }
-        .brevo-form-wrapper #sib-container {
-            background-color: var(--bg-card) !important;
-            border-color: rgba(255, 23, 68, 0.4) !important;
-            border-width: 2px !important;
+        .support-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 28px;
+            background: var(--bg-card);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s;
         }
-        .brevo-form-wrapper #sib-container .sib-form-block p,
-        .brevo-form-wrapper #sib-container .entry__label { color: var(--text-main) !important; }
-        .brevo-form-wrapper #sib-container .entry__specification { display: none; }
-        .brevo-form-wrapper #sib-container .input {
-            background: var(--bg-dark) !important;
-            border-color: rgba(255,255,255,0.2) !important;
-            color: var(--text-main) !important;
-        }
-        .brevo-form-wrapper #sib-container .input::placeholder { color: var(--text-muted) !important; }
-        .brevo-form-wrapper #sib-form-container .sib-form-block__button {
-            background-color: var(--primary) !important;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.4);
-        }
-        .brevo-form-wrapper #sib-form-container .sib-form-block__button:hover {
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+        .support-email:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
         }
         footer {
             text-align: center;
@@ -420,53 +397,20 @@
             .plans { grid-template-columns: 1fr; }
         }
     </style>
-    <style>
-        @font-face { font-display: block; font-family: Roboto; src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff"); }
-        @font-face { font-display: fallback; font-family: Roboto; font-weight: 600; src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff"); }
-        @font-face { font-display: fallback; font-family: Roboto; font-weight: 700; src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff"); }
-        #sib-container input:-ms-input-placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #a0a0a0; }
-        #sib-container input::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #a0a0a0; }
-        #sib-container textarea::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #a0a0a0; }
-        #sib-container a { text-decoration: underline; color: var(--primary); }
-    </style>
-    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body>
+    <div class="preview-badge">Vista previa · No indexada</div>
     <a href="../../" class="back-link">
         <img src="../../imagenes/logo.png" alt="">
         DrawSports
     </a>
     <div class="top-nav">
-        <div class="lang-desktop">
-            <a href="index.html" class="lang-btn active" title="Español">🇪🇸</a>
-            <a href="en/index.html" class="lang-btn" title="English">🇺🇸</a>
-            <a href="../../zh/pro/planes/" class="lang-btn" title="中文">🇨🇳</a>
-            <a href="../../ja/pro/planes/" class="lang-btn" title="日本語">🇯🇵</a>
-        </div>
-        <div class="lang-mobile">
-            <button type="button" class="lang-trigger lang-current" aria-label="Idioma actual">🇪🇸</button>
-            <button type="button" class="lang-trigger lang-globe" aria-label="Cambiar idioma" aria-expanded="false">🌐</button>
-            <div class="lang-dropdown" id="langDropdown">
-                <a href="index.html" title="Español">🇪🇸</a>
-                <a href="en/index.html" title="English">🇺🇸</a>
-                <a href="../../zh/pro/planes/" title="中文">🇨🇳</a>
-                <a href="../../ja/pro/planes/" title="日本語">🇯🇵</a>
-            </div>
-        </div>
+        <a href="index.html" class="lang-btn active" title="Español">🇪🇸</a>
+        <a href="en/index.html" class="lang-btn" title="English">🇺🇸</a>
         <a href="https://panel.drawsports.app/es" class="login-btn">
             Acceder
         </a>
     </div>
-    <script>
-    (function(){
-        var d=document,m=d.querySelector('.lang-mobile'),tr=d.querySelectorAll('.lang-trigger'),dd=d.getElementById('langDropdown');
-        if(!m||!dd)return;
-        function toggle(){dd.classList.toggle('open');tr[1].setAttribute('aria-expanded',dd.classList.contains('open'));}
-        function close(){dd.classList.remove('open');tr[1].setAttribute('aria-expanded','false');}
-        tr[0].addEventListener('click',toggle);tr[1].addEventListener('click',toggle);
-        d.addEventListener('click',function(e){if(!m.contains(e.target))close();});
-    })();
-    </script>
 
     <section class="hero">
         <div class="logo-container">
@@ -533,74 +477,21 @@
                 <p class="plan-period">Suscripción anual</p>
                 <a href="https://drawsports.lemonsqueezy.com/checkout/buy/13aa906b-7bfa-4c4a-ad15-f8802bd56691?discount=0" class="plan-btn" target="_blank" rel="noopener noreferrer">Comprar</a>
             </div>
-            <div class="plan plan-custom plan-custom-block" id="contacto">
+            <div class="plan plan-custom plan-custom-block">
                 <div class="plan-custom-content">
                     <span class="plan-custom-icon">💬</span>
                     <h3 class="plan-custom-title">Plan a medida</h3>
-                    <p class="plan-custom-desc">Más licencias o facturación corporativa. También soporte: panel PRO, facturación y la app — mismo correo.</p>
+                    <p class="plan-custom-desc">Te asesoramos sin compromiso.</p>
                 </div>
-                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%20Consulta" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Contactar</a>
+                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%20Plan%20a%20medida" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Contactar</a>
             </div>
         </div>
     </section>
 
-    <section class="newsletter-section" id="novedades">
-        <h2>Novedades DrawSports</h2>
-        <p class="newsletter-intro">Recibe en tu correo actualizaciones de la app, contenido para entrenadores y noticias PRO. Sin spam.</p>
-        <div class="brevo-form-wrapper">
-            <div class="sib-form" style="text-align: center; background: transparent;">
-                <div id="sib-form-container" class="sib-form-container">
-                    <div id="error-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;max-width:540px;">
-                        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-                            <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
-                                <path d="M256 40c118.621 0 216 96.075 216 216 0 119.291-96.61 216-216 216-119.244 0-216-96.562-216-216 0-119.203 96.602-216 216-216m0-32C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm-11.49 120h22.979c6.823 0 12.274 5.682 11.99 12.5l-7 168c-.268 6.428-5.556 11.5-11.99 11.5h-8.979c-6.433 0-11.722-5.073-11.99-11.5l-7-168c-.283-6.818 5.167-12.5 11.99-12.5zM256 340c-15.464 0-28 12.536-28 28s12.536 28 28 28 28-12.536 28-28-12.536-28-28-28z" />
-                            </svg>
-                            <span class="sib-form-message-panel__inner-text">No hemos podido validar su suscripción.</span>
-                        </div>
-                    </div>
-                    <div></div>
-                    <div id="success-message" class="sib-form-message-panel" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#085229; background-color:#e7faf0; border-radius:3px; border-color:#13ce66;max-width:540px;">
-                        <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
-                            <svg viewBox="0 0 512 512" class="sib-icon sib-notification__icon">
-                                <path d="M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z" />
-                            </svg>
-                            <span class="sib-form-message-panel__inner-text">Se ha realizado su suscripción.</span>
-                        </div>
-                    </div>
-                    <div></div>
-                    <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:var(--bg-card); max-width:540px; border-radius:16px; border-width:2px; border-color:rgba(255,23,68,0.4); border-style:solid; direction:ltr; margin:0 auto;">
-                        <form id="sib-form" method="POST" action="https://1e22ccbe.sibforms.com/serve/MUIFACtnKHJsShAjkuxAXFB0Rh0duZev4fgJzx1FrkbNw9U8InIYib3spnnAl4AElMW_W-ovfukw1_roqzt3VXS7OpxibJkOucABlPP0T-adlO93lXRUyuci2N7WFAd8suNRLOqs5nJABfVZkvi16iP1Q9-Vh9-_Zv6HELCedyHtT-oJOiq9fye8v3JjxAzHTYZOFtGfBR21y0i4" data-type="subscription">
-                            <div style="padding: 8px 0;">
-                                <div class="sib-input sib-form-block">
-                                    <div class="form__entry entry_block">
-                                        <div class="form__label-row ">
-                                            <label class="entry__label" style="font-weight: 600; text-align:center; font-size:1rem; font-family:inherit; color:var(--text-main);" for="EMAIL" data-required="*">Tu email</label>
-                                            <div class="entry__field">
-                                                <input class="input " type="email" id="EMAIL" name="EMAIL" autocomplete="email" placeholder="tu@email.com" data-required="true" required />
-                                            </div>
-                                        </div>
-                                        <label class="entry__error entry__error--primary" style="font-size:16px; text-align:left; font-family:Helvetica, sans-serif; color:#661d1d; background-color:#ffeded; border-radius:3px; border-color:#ff4949;"></label>
-                                        <label class="entry__specification" style="display:none;"></label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="padding: 8px 0;">
-                                <div class="sib-form-block" style="text-align: left">
-                                    <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:1rem; font-weight:700; font-family:inherit; color:#FFFFFF; background-color:var(--primary); border-radius:50px; border-width:0; padding:14px 28px;" form="sib-form" type="submit">
-                                        <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
-                                            <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
-                                        </svg>
-                                        Suscribirme
-                                    </button>
-                                </div>
-                            </div>
-                            <input type="text" name="email_address_check" value="" class="input--hidden">
-                            <input type="hidden" name="locale" value="es">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <section class="support-section">
+        <h2 class="support-title">¿Necesitas ayuda o un plan a medida?</h2>
+        <p class="support-text">Consultas técnicas, facturación o planes a medida. Nuestro equipo te acompaña.</p>
+        <a href="mailto:info@basketouch.com" class="support-email">info@basketouch.com</a>
     </section>
 
     <footer>
@@ -611,16 +502,5 @@
             <a href="mailto:info@basketouch.com">Soporte</a>
         </p>
     </footer>
-
-    <script>
-        window.REQUIRED_CODE_ERROR_MESSAGE = 'Elija un código de país';
-        window.LOCALE = 'es';
-        window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "La información que ha proporcionado no es válida. Compruebe el formato del campo e inténtelo de nuevo.";
-        window.REQUIRED_ERROR_MESSAGE = "Este campo no puede quedarse vacío.";
-        window.GENERIC_INVALID_MESSAGE = "La información que ha proporcionado no es válida. Compruebe el formato del campo e inténtelo de nuevo.";
-        window.translation = { common: { selectedList: '{quantity} lista seleccionada', selectedLists: '{quantity} listas seleccionadas', selectedOption: '{quantity} seleccionado', selectedOptions: '{quantity} seleccionados' } };
-        var AUTOHIDE = Boolean(0);
-    </script>
-    <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
