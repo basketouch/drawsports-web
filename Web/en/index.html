@@ -84,28 +84,127 @@
         </div>
       </section>
 
-      <section class="authority-section">
-        <div class="authority-content">
-          <div>
-            <img
-              src="../imagenes/jorge-lorenzo.jpg"
-              alt="Jorge Lorenzo - World Champion 2019 and European Champion 2022"
-              class="authority-photo"
-            />
-          </div>
-          <div>
-            <div class="authority-header">
-              <h2>Designed from Elite Experience.</h2>
-            </div>
-            <div class="authority-content-text">
-              <p>
-                I'm <strong>Jorge Lorenzo</strong>, assistant coach for the Spanish National Team
-                with Sergio Scariolo for over 7 years. I created DrawSports to solve the real
-                problems we face at World Championships, EuroBaskets and Olympic Games. A tool made
-                by coaches, for coaches.
+      <section class="founder" aria-labelledby="founder-heading">
+        <div class="founder-inner container-wide">
+          <div class="founder-media">
+            <div class="founder-carousel" data-founder-carousel>
+              <div class="founder-frame">
+                <figure
+                  class="founder-slide is-active"
+                  data-founder-slide
+                  data-caption="With Sergio Scariolo · Eurobasket 2022 champions 🥇"
+                >
+                  <picture>
+                    <source srcset="../imagenes/founder/jorge-scariolo.webp" type="image/webp" />
+                    <img
+                      src="../imagenes/founder/jorge-scariolo.jpg"
+                      alt="Jorge Lorenzo with Sergio Scariolo — Eurobasket 2022"
+                      width="600"
+                      height="601"
+                    />
+                  </picture>
+                </figure>
+                <figure
+                  class="founder-slide"
+                  data-founder-slide
+                  data-caption="Eurobasket 2022 Champion 🥇"
+                  hidden
+                >
+                  <picture>
+                    <source srcset="../imagenes/founder/jorge-lorenzo.webp" type="image/webp" />
+                    <img
+                      src="../imagenes/founder/jorge-lorenzo.jpg"
+                      alt="Jorge Lorenzo with the Eurobasket 2022 trophy"
+                      width="600"
+                      height="714"
+                    />
+                  </picture>
+                </figure>
+                <figure
+                  class="founder-slide"
+                  data-founder-slide
+                  data-caption="2019 World Champion 🥇"
+                  hidden
+                >
+                  <img
+                    src="../imagenes/founder/campeon-del-mundo-2019.png"
+                    alt="Jorge Lorenzo with the 2019 World Cup trophy"
+                    width="784"
+                    height="786"
+                  />
+                </figure>
+                <figure
+                  class="founder-slide"
+                  data-founder-slide
+                  data-caption="Competed at the Tokyo 2021 and Paris 2024 Olympics"
+                  hidden
+                >
+                  <img
+                    src="../imagenes/founder/jjoo-tokyo-paris.png"
+                    alt="Jorge Lorenzo at the Olympic rings"
+                    width="784"
+                    height="786"
+                  />
+                </figure>
+              </div>
+              <p class="founder-name">Jorge Lorenzo</p>
+              <p class="founder-caption" data-founder-caption>
+                With Sergio Scariolo · Eurobasket 2022 champions 🥇
               </p>
+              <div class="founder-dots" data-founder-dots role="tablist" aria-label="Photos">
+                <button type="button" class="is-active" aria-label="Photo 1"></button>
+                <button type="button" aria-label="Photo 2"></button>
+                <button type="button" aria-label="Photo 3"></button>
+                <button type="button" aria-label="Photo 4"></button>
+              </div>
             </div>
-            <div class="community-link">
+          </div>
+
+          <div class="founder-copy">
+            <p class="founder-eyebrow">The coach behind DrawSports</p>
+            <h2 id="founder-heading">Hi, I'm Jorge Lorenzo.</h2>
+            <p class="founder-bio">
+              I've been on a lot of courts. Some were basketball courts, others were the kind you
+              can't see. I've been coaching since I was 16. I've worked at every level — from youth
+              teams to the world elite — and basketball has taken me places I never imagined.
+            </p>
+            <p class="founder-bio founder-bio-secondary">
+              I built DrawSports because I needed a tactical whiteboard on iPad that matches the
+              work on the court. If you've felt that too, this is for you.
+            </p>
+            <div class="founder-timeline" aria-label="Career highlights">
+              <article class="founder-badge is-gold">
+                <span aria-hidden="true">🥇</span>
+                <strong>2019</strong>
+                <span>World Cup</span>
+              </article>
+              <article class="founder-badge">
+                <span aria-hidden="true">🏀</span>
+                <strong>2021</strong>
+                <span>Tokyo Olympics</span>
+              </article>
+              <article class="founder-badge is-gold">
+                <span aria-hidden="true">🥇</span>
+                <strong>2022</strong>
+                <span>Eurobasket</span>
+              </article>
+              <article class="founder-badge">
+                <span aria-hidden="true">🏀</span>
+                <strong>2023</strong>
+                <span>World Cup</span>
+              </article>
+              <article class="founder-badge">
+                <span aria-hidden="true">🏀</span>
+                <strong>2024</strong>
+                <span>Paris Olympics</span>
+              </article>
+              <article class="founder-badge">
+                <span aria-hidden="true">🏀</span>
+                <strong>2025</strong>
+                <span>Eurobasket</span>
+              </article>
+            </div>
+            <div class="community-link founder-community">
               <a
                 href="https://www.skool.com/jorge-lorenzo-coach/about"
                 target="_blank"
@@ -259,6 +358,7 @@
     </a>
 
     <script src="/js/site-nav.js"></script>
+    <script src="/js/founder-carousel.js"></script>
     <script src="https://player.vimeo.com/api/player.js"></script>
   </body>
 </html>
