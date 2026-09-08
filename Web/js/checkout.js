@@ -119,7 +119,7 @@
     plazasActuales = plazas;
     crearModal();
     aviso.hidden = true;
-    campo.value = "";
+    campo.value = emailValido(emailPrevio) ? emailPrevio : "";
     modal.hidden = false;
     document.body.classList.add("ds-modal-abierto");
     campo.focus();
@@ -138,6 +138,12 @@
       customData: { locale: esEN ? "en" : "es" },
     });
   }
+
+  // El panel enlaza con ?email=… para no volver a pedirlo.
+  var emailPrevio = "";
+  try {
+    emailPrevio = (new URLSearchParams(window.location.search).get("email") || "").trim().toLowerCase();
+  } catch (_) {}
 
   botones.forEach(function (boton) {
     var plazas = parseInt(boton.getAttribute("data-plan-seats"), 10);
