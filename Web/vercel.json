@@ -2,6 +2,26 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/pro",
+      "destination": "/pro/planes/",
+      "permanent": false
+    },
+    {
+      "source": "/pro/",
+      "destination": "/pro/planes/",
+      "permanent": false
+    },
+    {
+      "source": "/pro/en",
+      "destination": "/pro/planes/en/",
+      "permanent": false
+    },
+    {
+      "source": "/pro/en/",
+      "destination": "/pro/planes/en/",
+      "permanent": false
+    },
+    {
       "source": "/:path*",
       "has": [
         {
