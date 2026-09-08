@@ -1,0 +1,7 @@
+{
+  "name": "drawsports-web",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/generate-config.js"
+  }
+}

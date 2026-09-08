@@ -25,8 +25,26 @@ La página con planes y precios está en:
 
 - 4 planes: 1, 3, 5 licencias + Plan a medida
 - Precios: 89,99€, 285€, 450€
-- Los planes de 1, 3 y 5 licencias no tienen checkout propio todavía: enlazan a consulta por email hasta que existan precios en Paddle
+- Los planes de 1, 3 y 5 licencias se compran aquí con Paddle
 - El pack Mac + iPad se compra en cutsports.app
+
+## Checkout (Paddle)
+
+`js/config.js` se genera en el build desde variables de entorno de Vercel:
+
+| Variable | Uso |
+|----------|-----|
+| `PADDLE_CLIENT_TOKEN` | client-side token live |
+| `PADDLE_ENVIRONMENT` | `production` (por defecto) |
+| `PADDLE_PRICE_DRAWSPORTS_1/3/5` | precio de cada tramo |
+
+Sin token o sin el precio de un tramo, **ese botón vuelve a ser consulta por email**:
+la página nunca queda rota, solo deja de vender.
+
+En Paddle hay que aprobar el dominio `drawsports.app` (Checkout → Domain approval).
+
+Las plazas de cada tramo las declara `paddle_price_catalog.seats` en Supabase, no la
+`quantity` del checkout, porque 3 licencias por 285 € no es 3 x 89,99 €.
 - Plan a medida → mailto info@basketouch.com
 
 ## Cómo publicar cuando esté finalizada

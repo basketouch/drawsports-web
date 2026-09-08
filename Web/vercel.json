@@ -3,7 +3,12 @@
   "redirects": [
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.drawsports.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.drawsports.app"
+        }
+      ],
       "destination": "https://drawsports.app/:path*",
       "permanent": true
     },
@@ -27,5 +32,7 @@
       "destination": "/",
       "permanent": true
     }
-  ]
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "."
 }

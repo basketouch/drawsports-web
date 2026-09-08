@@ -396,6 +396,20 @@
             .features { grid-template-columns: 1fr; padding: 40px 15px; }
             .plans { grid-template-columns: 1fr; }
         }
+        .ds-modal { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        .ds-modal[hidden] { display: none; }
+        .ds-modal-fondo { position: absolute; inset: 0; background: rgba(0,0,0,0.72); }
+        .ds-modal-caja { position: relative; width: 100%; max-width: 420px; background: #14161b; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+        .ds-modal-caja h2 { margin: 0 0 8px; font-size: 1.35rem; color: #fff; }
+        .ds-modal-lead { margin: 0 0 18px; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+        .ds-modal-form label { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
+        .ds-modal-form input { width: 100%; margin-top: 6px; padding: 12px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: #0d0f13; color: #fff; font-size: 1rem; }
+        .ds-modal-form input:focus { outline: none; border-color: #b81e24; }
+        .ds-modal-error { margin: -8px 0 14px; font-size: 0.85rem; color: #ff6b6b; }
+        .ds-modal-acciones { display: flex; gap: 10px; flex-wrap: wrap; }
+        .ds-modal-acciones .plan-btn { flex: 1; min-width: 130px; }
+        .ds-modal-cerrar { position: absolute; top: 12px; right: 14px; background: none; border: 0; color: rgba(255,255,255,0.6); font-size: 1.6rem; line-height: 1; cursor: pointer; }
+        body.ds-modal-abierto { overflow: hidden; }
     </style>
 </head>
 <body>
@@ -463,19 +477,19 @@
                 <p class="plan-users">1 <span>licencia</span></p>
                 <p class="plan-price">89,99€</p>
                 <p class="plan-period">Suscripción anual</p>
-                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%201%20licencia" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Consultar</a>
+                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%201%20licencia" class="plan-btn plan-btn-outline" data-plan-seats="1" data-plan-label="Comprar" target="_blank" rel="noopener noreferrer">Consultar</a>
             </div>
             <div class="plan">
                 <p class="plan-users">3 <span>licencias</span></p>
                 <p class="plan-price">285€</p>
                 <p class="plan-period">Suscripción anual</p>
-                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%203%20licencias" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Consultar</a>
+                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%203%20licencias" class="plan-btn plan-btn-outline" data-plan-seats="3" data-plan-label="Comprar" target="_blank" rel="noopener noreferrer">Consultar</a>
             </div>
             <div class="plan">
                 <p class="plan-users">5 <span>licencias</span></p>
                 <p class="plan-price">450€</p>
                 <p class="plan-period">Suscripción anual</p>
-                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%205%20licencias" class="plan-btn plan-btn-outline" target="_blank" rel="noopener noreferrer">Consultar</a>
+                <a href="mailto:info@basketouch.com?subject=DrawSports%20PRO%20-%205%20licencias" class="plan-btn plan-btn-outline" data-plan-seats="5" data-plan-label="Comprar" target="_blank" rel="noopener noreferrer">Consultar</a>
             </div>
             <div class="plan plan-pack">
                 <p class="plan-users">Pack <span>Mac + iPad</span></p>
@@ -508,5 +522,8 @@
             <a href="mailto:info@basketouch.com">Soporte</a>
         </p>
     </footer>
+    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/checkout.js"></script>
 </body>
 </html>
