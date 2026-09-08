@@ -2,7 +2,7 @@
 
 ## Ubicación
 
-La página con planes, precios y enlaces a Lemon Squeezy está en:
+La página con planes y precios está en:
 
 - **Español:** `Web/pro/planes/index.html`
 - **Inglés:** `Web/pro/planes/en/index.html`
@@ -25,7 +25,8 @@ La página con planes, precios y enlaces a Lemon Squeezy está en:
 
 - 4 planes: 1, 3, 5 licencias + Plan a medida
 - Precios: 89,99€, 285€, 450€
-- Enlaces directos al checkout de Lemon Squeezy
+- Los planes de 1, 3 y 5 licencias no tienen checkout propio todavía: enlazan a consulta por email hasta que existan precios en Paddle
+- El pack Mac + iPad se compra en cutsports.app
 - Plan a medida → mailto info@basketouch.com
 
 ## Cómo publicar cuando esté finalizada
