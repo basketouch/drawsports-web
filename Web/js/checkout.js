@@ -43,6 +43,15 @@
   var listo =
     typeof Paddle !== "undefined" && config.paddleClientToken && config.prices;
 
+  function urlGracias(plazas, email) {
+    var base = esEN ? "/pro/gracias/en/" : "/pro/gracias/";
+    var qs = "?seats=" + encodeURIComponent(String(plazas || 1));
+    if (emailValido(email)) qs += "&email=" + encodeURIComponent(email);
+    return base + qs;
+  }
+
+  var ultimoEmailCheckout = "";
+
   if (listo) {
     Paddle.Environment.set(config.paddleEnvironment === "sandbox" ? "sandbox" : "production");
     Paddle.Initialize({
@@ -50,7 +59,7 @@
       eventCallback: function (evento) {
         if (!evento || evento.name !== "checkout.completed") return;
         window.setTimeout(function () {
-          window.location.href = (config.panelUrl || "https://panel.drawsports.app/") + "?comprado=1";
+          window.location.href = urlGracias(plazasActuales, ultimoEmailCheckout);
         }, 1500);
       },
     });
@@ -132,6 +141,10 @@
   }
 
   function abrirPaddle(plazas, email) {
+    ultimoEmailCheckout = email;
+    try {
+      sessionStorage.setItem("drawsports_checkout_email", email);
+    } catch (_) {}
     Paddle.Checkout.open({
       items: [{ priceId: precioDe(plazas), quantity: 1 }],
       customer: { email: email },

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/drawsports-pro.css" />
+    <link rel="icon" type="image/png" href="/imagenes/logo.png" />
+    <title>DrawSports PRO — Purchase complete</title>
+    <meta name="description" content="Your DrawSports PRO licence is active. Download the iPad app and sign in with your email and a one-time code." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://drawsports.app/pro/gracias/en/" />
+    <link rel="alternate" hreflang="es" href="https://drawsports.app/pro/gracias/" />
+    <link rel="alternate" hreflang="en" href="https://drawsports.app/pro/gracias/en/" />
+  </head>
+  <body class="pro-thanks-page">
+    <a href="/en/" class="back-link">
+      <img src="/imagenes/logo.png" alt="" width="24" height="24" />
+      DrawSports
+    </a>
+    <div class="top-nav">
+      <a href="/pro/gracias/" class="lang-btn" title="Español" hreflang="es" lang="es">🇪🇸</a>
+      <a href="/pro/gracias/en/" class="lang-btn active" title="English" hreflang="en" lang="en">🇺🇸</a>
+      <a href="https://panel.drawsports.app/en/login" class="login-btn">Sign in</a>
+    </div>
+
+    <main class="pro-thanks-card">
+      <div class="pro-thanks-icon" aria-hidden="true">✓</div>
+      <span class="hero-badge">DrawSports PRO</span>
+      <h1>Your licence is active</h1>
+      <p class="pro-thanks-lead">
+        Use the same email you just purchased with
+        <span class="pro-thanks-email" id="thanks-email">you@email.com</span>
+      </p>
+
+      <ol class="pro-thanks-steps">
+        <li>
+          <span class="pro-thanks-step-num">1</span>
+          <div>
+            <strong>Download DrawSports on your iPad</strong>
+            <span>
+              Install the app from the
+              <a href="https://apps.apple.com/app/drawsports/id6756434573" target="_blank" rel="noopener">App Store</a>.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="pro-thanks-step-num">2</span>
+          <div>
+            <strong>Sign in with your email</strong>
+            <span>
+              Enter the email above and tap <strong>Send code</strong>. You will receive a code by
+              email (check spam). <strong>There is no password.</strong>
+            </span>
+          </div>
+        </li>
+        <li data-seats-gt1>
+          <span class="pro-thanks-step-num">3</span>
+          <div>
+            <strong>Invite your team</strong>
+            <span>
+              Sign in to the panel with the same email and code. From there you can invite the
+              coaches who will use the other licences.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="pro-thanks-step-num" data-solo-only>3</span>
+          <span class="pro-thanks-step-num" data-seats-gt1>4</span>
+          <div>
+            <strong>Start on the bench</strong>
+            <span>Tactical whiteboard, video, and export on your iPad.</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="pro-thanks-actions">
+        <a
+          class="plan-btn"
+          href="https://apps.apple.com/app/drawsports/id6756434573"
+          target="_blank"
+          rel="noopener"
+          >Download DrawSports for iPad</a
+        >
+        <a
+          class="plan-btn plan-btn-outline"
+          data-seats-gt1
+          href="https://panel.drawsports.app/en/login"
+          >Open PRO panel</a
+        >
+        <a class="plan-btn plan-btn-outline" href="mailto:help@basketouch.com">Help</a>
+      </div>
+
+      <p class="pro-thanks-footnote">
+        You will receive a confirmation email from Paddle. The sign-in code is not in that email:
+        request it in the app when you want to sign in. You can also sign in at
+        <a href="https://panel.drawsports.app/en/login">panel.drawsports.app</a>.
+      </p>
+    </main>
+
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var seats = parseInt(params.get("seats") || "1", 10);
+        var email =
+          (params.get("email") || "").trim().toLowerCase() ||
+          (function () {
+            try {
+              return sessionStorage.getItem("drawsports_checkout_email") || "";
+            } catch (_) {
+              return "";
+            }
+          })();
+
+        if (seats > 1) document.body.classList.add("is-team");
+
+        var emailEl = document.getElementById("thanks-email");
+        if (email && emailEl) emailEl.textContent = email;
+        else if (emailEl) emailEl.textContent = "your purchase email";
+
+        document.querySelectorAll("[data-solo-only]").forEach(function (el) {
+          el.hidden = seats > 1;
+        });
+        document.querySelectorAll("[data-seats-gt1]").forEach(function (el) {
+          if (el.tagName === "SPAN" && seats <= 1) el.hidden = true;
+        });
+
+        if (email) {
+          var panelLinks = document.querySelectorAll('a[href*="panel.drawsports.app"]');
+          panelLinks.forEach(function (a) {
+            try {
+              var u = new URL(a.href);
+              u.searchParams.set("email", email);
+              a.href = u.toString();
+            } catch (_) {}
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
