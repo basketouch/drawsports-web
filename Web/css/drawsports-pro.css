@@ -458,3 +458,371 @@
   display: list-item;
 }
 
+/* — Planes PRO — */
+.planes-page .pro-hero {
+  min-height: auto;
+  padding: 2.5rem 1.25rem 2rem;
+}
+
+.planes-page .pro-hero .logo-container {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 1.25rem;
+  border-radius: 22%;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+.planes-page .pro-hero .logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.planes-banner {
+  background: var(--accent);
+  padding: 3.5rem 1.25rem;
+}
+
+.planes-banner .images-gallery {
+  max-width: var(--container-wide);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.planes-banner .gallery-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+  background: rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+}
+
+.planes-banner .gallery-image:hover {
+  transform: translateY(-4px);
+}
+
+.plans-section {
+  padding: 3.5rem 1.25rem;
+  background: linear-gradient(180deg, transparent 0%, var(--accent-glow) 50%, transparent 100%);
+}
+
+.plans-title {
+  text-align: center;
+  font-family: var(--font-rounded);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  margin: 0 0 0.75rem;
+}
+
+.plans-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin: 0 auto 2.5rem;
+  max-width: 36rem;
+  font-size: 1.02rem;
+}
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: var(--container-wide);
+  margin: 0 auto;
+}
+
+.plan {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.plan:hover {
+  border-color: var(--accent-glow-strong);
+  box-shadow: 0 12px 40px rgba(184, 30, 36, 0.2);
+  transform: translateY(-3px);
+}
+
+.plan-users {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.plan-users span {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.plan-price {
+  font-size: 1.85rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.plan-period {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.planes-page .plan-btn {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1.25rem;
+  border-radius: var(--radius-btn);
+  background: var(--accent);
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 4px 15px rgba(184, 30, 36, 0.35);
+  border: 2px solid var(--accent);
+  cursor: pointer;
+}
+
+.planes-page .plan-btn:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.planes-page .plan-btn-outline {
+  background: transparent;
+  color: var(--accent) !important;
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+.planes-page .plan-btn-outline:hover {
+  background: var(--accent);
+  color: #fff !important;
+}
+
+.plan-pack {
+  border-color: var(--accent-glow-strong);
+}
+
+.plan-addon {
+  border-color: rgba(184, 30, 36, 0.35);
+}
+
+.plan-custom-block {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, rgba(184, 30, 36, 0.08) 0%, rgba(184, 30, 36, 0.02) 100%);
+  border-color: rgba(184, 30, 36, 0.35);
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.plan-custom-content {
+  flex: 1;
+  min-width: 200px;
+}
+
+.plan-custom-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.plan-custom-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 0.35rem;
+}
+
+.plan-custom-desc {
+  font-size: 0.98rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.plan-custom-block .plan-btn-outline {
+  flex-shrink: 0;
+  width: auto;
+  min-width: 10rem;
+}
+
+.planes-support {
+  padding: 3rem 1.25rem;
+  text-align: center;
+}
+
+.planes-support-title {
+  font-size: 1.5rem;
+  margin: 0 0 0.75rem;
+  font-family: var(--font-rounded);
+}
+
+.planes-support-text {
+  color: var(--text-muted);
+  max-width: 34rem;
+  margin: 0 auto 1.25rem;
+  line-height: 1.65;
+}
+
+.planes-support-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-btn);
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.planes-support-email:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* — Checkout modal (planes) — */
+.ds-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.ds-modal[hidden] {
+  display: none;
+}
+
+.ds-modal-fondo {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.ds-modal-caja {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+.ds-modal-caja h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.35rem;
+  color: var(--text);
+}
+
+.ds-modal-lead {
+  margin: 0 0 1.1rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.ds-modal-form label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.ds-modal-form input {
+  width: 100%;
+  margin-top: 0.35rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.ds-modal-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.ds-modal-error {
+  margin: -0.35rem 0 0.85rem;
+  font-size: 0.85rem;
+  color: #ff6b6b;
+}
+
+.ds-modal-acciones {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.ds-modal-acciones .plan-btn {
+  flex: 1;
+  min-width: 8rem;
+}
+
+.ds-modal-cerrar {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.75rem;
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+body.ds-modal-abierto {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .planes-banner .images-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-custom-block {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.75rem 1.25rem;
+  }
+
+  .plan-custom-block .plan-btn-outline {
+    width: 100%;
+  }
+
+  .plans {
+    grid-template-columns: 1fr;
+  }
+}
+
