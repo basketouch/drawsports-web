@@ -524,6 +524,10 @@
   align-items: center;
 }
 
+.planes-banner .images-gallery picture {
+  display: block;
+}
+
 .planes-banner .gallery-image {
   width: 100%;
   height: auto;

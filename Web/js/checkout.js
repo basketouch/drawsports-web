@@ -63,12 +63,48 @@
       };
 
   var listo =
-    typeof Paddle !== "undefined" &&
     config.paddleClientToken &&
     config.prices &&
     Object.keys(config.prices).length;
 
   var listoAddon = listo && config.priceAddon;
+
+  var paddleInitPromise = null;
+
+  function ensurePaddle() {
+    if (typeof Paddle !== "undefined") {
+      return Promise.resolve(Paddle);
+    }
+    if (!paddleInitPromise) {
+      paddleInitPromise = new Promise(function (resolve, reject) {
+        var s = document.createElement("script");
+        s.src = "https://cdn.paddle.com/paddle/v2/paddle.js";
+        s.async = true;
+        s.onload = function () {
+          try {
+            Paddle.Environment.set(config.paddleEnvironment === "sandbox" ? "sandbox" : "production");
+            Paddle.Initialize({
+              token: config.paddleClientToken,
+              eventCallback: function (evento) {
+                if (!evento || evento.name !== "checkout.completed") return;
+                window.setTimeout(function () {
+                  window.location.href = urlGracias(plazasActuales, ultimoEmailCheckout);
+                }, 1500);
+              },
+            });
+            resolve(Paddle);
+          } catch (err) {
+            reject(err);
+          }
+        };
+        s.onerror = function () {
+          reject(new Error("paddle_load_failed"));
+        };
+        document.head.appendChild(s);
+      });
+    }
+    return paddleInitPromise;
+  }
 
   function urlGracias(plazas, email) {
     var base = esEN ? "/pro/gracias/en/" : "/pro/gracias/";
@@ -80,19 +116,6 @@
   var ultimoEmailCheckout = "";
   var plazasActuales = 1;
   var intentActual = "plan";
-
-  if (listo || listoAddon) {
-    Paddle.Environment.set(config.paddleEnvironment === "sandbox" ? "sandbox" : "production");
-    Paddle.Initialize({
-      token: config.paddleClientToken,
-      eventCallback: function (evento) {
-        if (!evento || evento.name !== "checkout.completed") return;
-        window.setTimeout(function () {
-          window.location.href = urlGracias(plazasActuales, ultimoEmailCheckout);
-        }, 1500);
-      },
-    });
-  }
 
   var modal = null;
   var campo = null;
@@ -178,14 +201,24 @@
     try {
       sessionStorage.setItem("drawsports_checkout_email", email);
     } catch (_) {}
-    Paddle.Checkout.open({
-      items: [{ priceId: priceId, quantity: 1 }],
-      customer: { email: email },
-      customData: {
-        locale: esEN ? "en" : "es",
-        purchase_context: intentActual === "addon" ? "addon" : "plan",
-      },
-    });
+    ensurePaddle()
+      .then(function () {
+        Paddle.Checkout.open({
+          items: [{ priceId: priceId, quantity: 1 }],
+          customer: { email: email },
+          customData: {
+            locale: esEN ? "en" : "es",
+            purchase_context: intentActual === "addon" ? "addon" : "plan",
+          },
+        });
+      })
+      .catch(function () {
+        window.alert(
+          esEN
+            ? "Could not open checkout. Check your connection and try again."
+            : "No se pudo abrir el checkout. Comprueba la conexión e inténtalo de nuevo."
+        );
+      });
   }
 
   function checkAddonEligibility(email) {

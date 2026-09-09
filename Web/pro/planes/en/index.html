@@ -16,16 +16,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/css/drawsports-pro.css" />
+    <link rel="preload" href="/imagenes/logo-header.webp" as="image" type="image/webp" />
   </head>
   <body class="planes-page">
     <header class="site-header">
       <div class="container-wide">
         <a class="brand" href="/en/">
-          <img class="brand-logo" src="/imagenes/logo.png" alt="" width="40" height="40" />
+          <picture>
+            <source srcset="/imagenes/logo-header.webp" type="image/webp" />
+            <img
+              class="brand-logo"
+              src="/imagenes/logo-header.png"
+              alt=""
+              width="40"
+              height="40"
+              fetchpriority="high"
+            />
+          </picture>
           <span>DrawSports</span>
         </a>
         <nav class="nav">
@@ -139,21 +150,42 @@
 
       <section class="planes-banner">
         <div class="images-gallery">
-          <img
-            src="/imagenes/imagen1.png"
-            alt="DrawSports - Tactical whiteboard for teams"
-            class="gallery-image"
-          />
-          <img
-            src="/imagenes/imagen2.png"
-            alt="DrawSports - Video analysis with drawing tools"
-            class="gallery-image"
-          />
-          <img
-            src="/imagenes/imagen3.png"
-            alt="DrawSports - Marks and timeline system"
-            class="gallery-image"
-          />
+          <picture>
+            <source srcset="/imagenes/imagen1.webp" type="image/webp" />
+            <img
+              src="/imagenes/imagen1.png"
+              alt="DrawSports - Tactical whiteboard for teams"
+              class="gallery-image"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="899"
+            />
+          </picture>
+          <picture>
+            <source srcset="/imagenes/imagen2.webp" type="image/webp" />
+            <img
+              src="/imagenes/imagen2.png"
+              alt="DrawSports - Video analysis with drawing tools"
+              class="gallery-image"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="899"
+            />
+          </picture>
+          <picture>
+            <source srcset="/imagenes/imagen3.webp" type="image/webp" />
+            <img
+              src="/imagenes/imagen3.png"
+              alt="DrawSports - Marks and timeline system"
+              class="gallery-image"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="899"
+            />
+          </picture>
         </div>
       </section>
 
@@ -214,9 +246,8 @@
       </div>
     </footer>
 
-    <script src="/js/site-nav.js"></script>
-    <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-    <script src="/js/config.js"></script>
-    <script src="/js/checkout.js"></script>
+    <script src="/js/site-nav.js" defer></script>
+    <script src="/js/config.js" defer></script>
+    <script src="/js/checkout.js" defer></script>
   </body>
 </html>
