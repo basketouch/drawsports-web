@@ -538,6 +538,10 @@
   margin: 0 auto;
 }
 
+.plans-grid-four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .plan {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -619,8 +623,92 @@
   border-color: var(--accent-glow-strong);
 }
 
-.plan-addon {
-  border-color: rgba(184, 30, 36, 0.35);
+.plan-addon-block {
+  max-width: var(--container-wide);
+  margin: 2rem auto 0;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, rgba(184, 30, 36, 0.1) 0%, rgba(184, 30, 36, 0.03) 100%);
+  border: 1px solid rgba(184, 30, 36, 0.35);
+  border-radius: var(--radius);
+  text-align: left;
+}
+
+.plan-addon-content {
+  flex: 1;
+  min-width: min(100%, 20rem);
+}
+
+.plan-addon-eyebrow {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.plan-addon-title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-rounded);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  line-height: 1.2;
+}
+
+.plan-addon-desc {
+  margin: 0 0 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+.plan-addon-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.plan-addon-points li::before {
+  content: "✓ ";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.plan-addon-side {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 9rem;
+}
+
+.plan-addon-price {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.plan-addon-price-note {
+  margin: 0 0 0.65rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.plan-addon-side .plan-btn {
+  width: 100%;
+  min-width: 9rem;
 }
 
 .plan-custom-block {
@@ -806,22 +894,35 @@ body.ds-modal-abierto {
   overflow: hidden;
 }
 
+@media (max-width: 1024px) {
+  .plans-grid-four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 768px) {
   .planes-banner .images-gallery {
     grid-template-columns: 1fr;
   }
 
-  .plan-custom-block {
+  .plan-custom-block,
+  .plan-addon-block {
     flex-direction: column;
     text-align: center;
     padding: 1.75rem 1.25rem;
   }
 
-  .plan-custom-block .plan-btn-outline {
+  .plan-addon-points {
+    justify-content: center;
+  }
+
+  .plan-custom-block .plan-btn-outline,
+  .plan-addon-side .plan-btn {
     width: 100%;
   }
 
-  .plans {
+  .plans,
+  .plans-grid-four {
     grid-template-columns: 1fr;
   }
 }
