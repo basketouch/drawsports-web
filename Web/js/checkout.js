@@ -10,6 +10,7 @@
   var addonOffer = document.getElementById("addon-offer");
   var addonBtn = document.querySelector("[data-checkout-addon]");
   var addonStatus = document.getElementById("addon-status");
+  var addonPeriodDefault = addonStatus ? addonStatus.textContent : "";
 
   var params = {};
   try {
@@ -33,11 +34,8 @@
         close: "Close",
         invalid: "Enter a valid email.",
         checking: "Checking…",
-        addonEligible: "You can add DrawSports PRO for your iPad with this email.",
-        addonNoPro:
-          "This email does not have an active CutSports Pro subscription. Try the Mac + iPad pack or a full DrawSports licence below.",
-        addonHasDrawsports:
-          "This email already has DrawSports PRO active. Sign in on your iPad or open the panel.",
+        addonNoPro: "Requires active CutSports Pro on this email.",
+        addonHasDrawsports: "DrawSports PRO already active on this email.",
         addonUnavailable: "The add-on is not available yet. Write to help@basketouch.com.",
         addonError: "Could not verify eligibility. Try again.",
         openPanel: "Open panel",
@@ -56,11 +54,8 @@
         close: "Cerrar",
         invalid: "Introduce un email válido.",
         checking: "Comprobando…",
-        addonEligible: "Puedes añadir DrawSports PRO para tu iPad con este email.",
-        addonNoPro:
-          "Este email no tiene CutSports Pro activo. Prueba el pack Mac + iPad o una licencia DrawSports completa abajo.",
-        addonHasDrawsports:
-          "Este email ya tiene DrawSports PRO activo. Entra en el iPad o abre el panel.",
+        addonNoPro: "Requiere CutSports Pro activo con este email.",
+        addonHasDrawsports: "DrawSports PRO ya activo en este email.",
         addonUnavailable:
           "El add-on aún no está disponible. Escribe a help@basketouch.com.",
         addonError: "No se pudo comprobar la elegibilidad. Inténtalo de nuevo.",
@@ -280,22 +275,27 @@
     if (!addonOffer) return;
     if (addonStatus) {
       if (estado === "checking") addonStatus.textContent = t.checking;
-      else if (estado === "eligible") addonStatus.textContent = t.addonEligible;
+      else if (estado === "eligible") addonStatus.textContent = addonPeriodDefault;
       else if (estado === "no_pro") addonStatus.textContent = t.addonNoPro;
       else if (estado === "has_drawsports") addonStatus.textContent = t.addonHasDrawsports;
       else if (estado === "unavailable") addonStatus.textContent = t.addonUnavailable;
-      else addonStatus.textContent = "";
+      else addonStatus.textContent = addonPeriodDefault;
     }
     if (addonBtn) {
       addonBtn.disabled = estado !== "eligible" || !listoAddon;
+      addonBtn.removeAttribute("data-action");
       if (estado === "has_drawsports") {
         addonBtn.textContent = t.openPanel;
+        addonBtn.setAttribute("data-action", "panel");
         addonBtn.onclick = function () {
           window.location.href =
             (config.panelUrl || "https://panel.drawsports.app/") +
             (esEN ? "en/login" : "es/login") +
             (emailValido(email) ? "?email=" + encodeURIComponent(email) : "");
         };
+      } else {
+        addonBtn.onclick = null;
+        addonBtn.textContent = addonBtn.getAttribute("data-plan-label") || addonBtn.textContent;
       }
     }
   }
@@ -320,9 +320,17 @@
     }
   }
 
-  if (addonBtn && listoAddon) {
+  if (addonBtn) {
     addonBtn.addEventListener("click", function () {
+      if (addonBtn.getAttribute("data-action") === "panel") return;
+      if (!listoAddon || addonBtn.disabled) return;
       abrir(1, true);
     });
+  }
+
+  if (params.get("addon") === "1" && addonOffer) {
+    try {
+      addonOffer.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (_) {}
   }
 })();

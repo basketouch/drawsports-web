@@ -400,55 +400,7 @@
         body.ds-modal-abierto { overflow: hidden; }
         .legal-footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
         .legal-footer a:hover { color: #fff; }
-        .addon-offer { max-width: 1000px; margin: -10px auto 28px; }
-        .addon-offer-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-left: 3px solid var(--primary);
-            border-radius: 12px;
-            padding: 14px 16px;
-            text-align: left;
-            box-shadow: none;
-        }
-        .addon-offer-main {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px 18px;
-        }
-        .addon-offer-copy { flex: 1 1 220px; min-width: 0; }
-        .addon-offer-kicker {
-            margin: 0 0 4px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--primary);
-        }
-        .addon-offer-title { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.35; }
-        .addon-offer-title strong { color: var(--primary); }
-        .addon-offer-lead { margin: 4px 0 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; }
-        .addon-offer-cta.plan-btn {
-            display: inline-block;
-            width: auto;
-            padding: 10px 16px;
-            font-size: 0.92rem;
-            white-space: nowrap;
-        }
-        .addon-offer-note {
-            margin: 10px 0 0;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.45;
-        }
-        .addon-offer-note a { color: var(--primary); }
-        @media (max-width: 640px) {
-            .addon-offer-main { align-items: stretch; }
-            .addon-offer-cta.plan-btn { width: 100%; }
-        }
+        .plan-addon { border-color: rgba(184, 30, 36, 0.35); }
     </style>
 </head>
 <body>
@@ -511,24 +463,6 @@
         <h2 class="plans-title">Choose your plan</h2>
         <p class="plans-subtitle">Annual subscription. Pay once a year, no surprises.</p>
 
-        <div class="addon-offer" id="addon-offer">
-            <div class="addon-offer-card">
-                <div class="addon-offer-main">
-                    <div class="addon-offer-copy">
-                        <p class="addon-offer-kicker">Already on CutSports Pro?</p>
-                        <p class="addon-offer-title">Add DrawSports on iPad · <strong>€51/year</strong></p>
-                        <p class="addon-offer-lead" id="addon-status">Same email on Mac and iPad.</p>
-                    </div>
-                    <button type="button" class="plan-btn addon-offer-cta" data-checkout-addon>Add DrawSports</button>
-                </div>
-                <p class="addon-offer-note">
-                    No Pro yet?
-                    <a href="https://cutsports.app/en/pricing/#pack-pro-drawsports">Mac + iPad pack</a>
-                    or a full licence below.
-                </p>
-            </div>
-        </div>
-
         <div class="plans">
             <div class="plan">
                 <p class="plan-users">1 <span>licence</span></p>
@@ -553,6 +487,12 @@
                 <p class="plan-price">€250</p>
                 <p class="plan-period">CutSports Pro (Mac) + DrawSports PRO (1 user) · yearly · 30-day trial</p>
                 <a href="https://cutsports.app/en/pricing/?plan=pack" class="plan-btn" target="_blank" rel="noopener noreferrer">Try the pack</a>
+            </div>
+            <div class="plan plan-addon" id="addon-offer">
+                <p class="plan-users">Add-on <span>CutSports Pro</span></p>
+                <p class="plan-price">€51</p>
+                <p class="plan-period" id="addon-status">DrawSports PRO on iPad · same email · yearly</p>
+                <button type="button" class="plan-btn plan-btn-outline" data-checkout-addon data-plan-label="Add">Add</button>
             </div>
             <div class="plan plan-custom plan-custom-block">
                 <div class="plan-custom-content">
