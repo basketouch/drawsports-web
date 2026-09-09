@@ -323,7 +323,7 @@
 /* — Post-compra PRO (gracias) — */
 .pro-thanks-page {
   min-height: 100vh;
-  padding: 5.5rem 1.25rem 3rem;
+  padding: 2rem 1.25rem 3rem;
   background: radial-gradient(1200px 600px at 50% -10%, rgba(184, 30, 36, 0.18), transparent 60%),
     var(--bg-dark, var(--bg));
   color: var(--text-main, var(--text));

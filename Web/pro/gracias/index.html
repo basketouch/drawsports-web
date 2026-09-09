@@ -19,15 +19,23 @@
     <link rel="alternate" hreflang="en" href="https://drawsports.app/pro/gracias/en/" />
   </head>
   <body class="pro-thanks-page">
-    <a href="/" class="back-link">
-      <img src="/imagenes/logo.png" alt="" width="24" height="24" />
-      DrawSports
-    </a>
-    <div class="top-nav">
-      <a href="/pro/gracias/" class="lang-btn active" title="Español" hreflang="es" lang="es">ES</a>
-      <a href="/pro/gracias/en/" class="lang-btn" title="English" hreflang="en" lang="en">EN</a>
-      <a href="https://panel.drawsports.app/es/login" class="login-btn">Acceder</a>
-    </div>
+    <header class="site-header">
+      <div class="container-wide">
+        <a class="brand" href="/">
+          <img class="brand-logo" src="/imagenes/logo.png" alt="" width="40" height="40" />
+          <span>DrawSports</span>
+        </a>
+        <nav class="nav">
+          <a href="/pro/planes/">Planes PRO</a>
+          <span class="lang-switch" aria-label="Idioma">
+            <a href="/pro/gracias/" class="is-active" hreflang="es" lang="es">ES</a>
+            <a href="/pro/gracias/en/" hreflang="en" lang="en">EN</a>
+          </span>
+          <a href="https://panel.drawsports.app/es">Acceder</a>
+          <a href="mailto:help@basketouch.com">Soporte</a>
+        </nav>
+      </div>
+    </header>
 
     <main class="pro-thanks-card">
       <div class="pro-thanks-icon" aria-hidden="true">✓</div>
@@ -136,6 +144,20 @@
       </p>
     </main>
 
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; 2026 DrawSports · Basketouch Solutions Spain SL</p>
+        <div class="legal-links">
+          <a href="/">Inicio</a>
+          <a href="https://panel.drawsports.app/es">Panel</a>
+          <a href="/legal/terminos/">Términos</a>
+          <a href="/legal/privacidad/">Privacidad</a>
+          <a href="/legal/reembolsos/">Reembolsos</a>
+          <a href="mailto:help@basketouch.com">Soporte</a>
+        </div>
+      </div>
+    </footer>
+
     <script>
       (function () {
         var params = new URLSearchParams(window.location.search);
@@ -181,5 +203,6 @@
         }
       })();
     </script>
+    <script src="/js/site-nav.js"></script>
   </body>
 </html>
