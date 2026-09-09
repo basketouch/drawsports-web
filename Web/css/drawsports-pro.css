@@ -450,12 +450,13 @@
   color: #fff;
 }
 
-.pro-thanks-page [data-seats-gt1] {
-  display: none;
+.pro-thanks-page [hidden] {
+  display: none !important;
 }
 
-.pro-thanks-page.is-team [data-seats-gt1] {
-  display: list-item;
+.pro-thanks-page .pro-thanks-steps[data-solo-only],
+.pro-thanks-page .pro-thanks-steps[data-seats-gt1] {
+  display: grid;
 }
 
 /* — Planes PRO — */

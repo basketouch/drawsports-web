@@ -33,20 +33,25 @@
       <div class="pro-thanks-icon" aria-hidden="true">✓</div>
       <span class="hero-badge">DrawSports PRO</span>
       <h1>Tu licencia está activa</h1>
-      <p class="pro-thanks-lead">
-        Contrataste en la web: tu licencia PRO ya está lista. Descarga la app en el iPad y entra con
-        el mismo email — te enviamos un código, sin contraseña.
+      <p class="pro-thanks-lead" data-solo-only>
+        Tu licencia ya está activa. Descarga la app en el iPad y entra con el mismo email — te
+        enviamos un código, sin contraseña. No necesitas el panel.
         <span class="pro-thanks-email" id="thanks-email">tu@email.com</span>
+      </p>
+      <p class="pro-thanks-lead" data-seats-gt1 hidden>
+        Tienes <span id="thanks-seats">3</span> licencias. Organiza tu equipo desde el panel: invita
+        entrenadores y reparte las plazas. Luego cada uno entra en la app con su email.
+        <span class="pro-thanks-email" id="thanks-email-team">tu@email.com</span>
       </p>
 
       <p class="pro-thanks-steps-title">Siguientes pasos</p>
-      <ol class="pro-thanks-steps">
+      <ol class="pro-thanks-steps" data-solo-only>
         <li>
           <span class="pro-thanks-step-num">1</span>
           <div>
             <strong>Descarga DrawSports en el iPad</strong>
             <span>
-              Con la licencia activa, instala la app desde la
+              Instala la app desde la
               <a href="https://apps.apple.com/es/app/drawsports/id6756434573" target="_blank" rel="noopener">App Store</a>.
             </span>
           </div>
@@ -56,27 +61,39 @@
           <div>
             <strong>Entra con tu email</strong>
             <span>
-              En la app, escribe el email de arriba y pulsa <strong>Enviar código</strong>. Te
-              llegará por correo (revisa el spam). <strong>No hace falta contraseña.</strong>
+              Escribe el email de arriba y pulsa <strong>Enviar código</strong>. Te llegará por
+              correo (revisa el spam). <strong>No hace falta contraseña.</strong>
             </span>
           </div>
         </li>
-        <li data-seats-gt1>
-          <span class="pro-thanks-step-num">3</span>
+      </ol>
+      <ol class="pro-thanks-steps" data-seats-gt1 hidden>
+        <li>
+          <span class="pro-thanks-step-num">1</span>
           <div>
-            <strong>Invita a tu equipo</strong>
+            <strong>Entra al panel</strong>
             <span>
-              Entra en el panel con el mismo email y código. Desde ahí invitas a los
-              entrenadores que usarán las otras licencias.
+              Con el email de la compra y un código por correo entras en
+              <a href="https://panel.drawsports.app/es/login">panel.drawsports.app</a>.
             </span>
           </div>
         </li>
         <li>
-          <span class="pro-thanks-step-num" data-solo-only>3</span>
-          <span class="pro-thanks-step-num" data-seats-gt1>4</span>
+          <span class="pro-thanks-step-num">2</span>
           <div>
-            <strong>Empieza en el banquillo</strong>
-            <span>Pizarra táctica, vídeo y exportación en tu iPad.</span>
+            <strong>Organiza tu equipo</strong>
+            <span>
+              Invita a los entrenadores y asigna las licencias. Tú eres el administrador del club.
+            </span>
+          </div>
+        </li>
+        <li>
+          <span class="pro-thanks-step-num">3</span>
+          <div>
+            <strong>Cada entrenador en su iPad</strong>
+            <span>
+              Descargan DrawSports en la App Store y entran con su email. Sin contraseña.
+            </span>
           </div>
         </li>
       </ol>
@@ -84,21 +101,38 @@
       <div class="pro-thanks-actions">
         <a
           class="plan-btn"
+          data-solo-only
           href="https://apps.apple.com/es/app/drawsports/id6756434573"
           target="_blank"
           rel="noopener"
           >Descargar app en iPad</a
         >
-        <a class="plan-btn plan-btn-outline" href="https://panel.drawsports.app/es/login"
-          >Acceder al panel</a
+        <a
+          class="plan-btn"
+          data-seats-gt1
+          hidden
+          href="https://panel.drawsports.app/es/login"
+          >Ir al panel</a
+        >
+        <a
+          class="plan-btn plan-btn-outline"
+          data-seats-gt1
+          hidden
+          href="https://apps.apple.com/es/app/drawsports/id6756434573"
+          target="_blank"
+          rel="noopener"
+          >Descargar app</a
         >
         <a class="plan-btn plan-btn-outline" href="mailto:help@basketouch.com">Ayuda</a>
       </div>
 
-      <p class="pro-thanks-footnote">
+      <p class="pro-thanks-footnote" data-solo-only>
         Recibirás un correo de confirmación de Paddle. El código de acceso no viene ahí: pídelo en
-        la app o en <a href="https://panel.drawsports.app/es/login">panel.drawsports.app</a> cuando
-        quieras entrar.
+        la app cuando quieras entrar.
+      </p>
+      <p class="pro-thanks-footnote" data-seats-gt1 hidden>
+        Recibirás un correo de confirmación de Paddle. El código no viene ahí: pídelo en el panel o
+        en la app cuando entres.
       </p>
     </main>
 
@@ -116,17 +150,23 @@
             }
           })();
 
-        if (seats > 1) document.body.classList.add("is-team");
+        var isTeam = seats > 1;
+        if (isTeam) document.body.classList.add("is-team");
 
-        var emailEl = document.getElementById("thanks-email");
-        if (email && emailEl) emailEl.textContent = email;
-        else if (emailEl) emailEl.textContent = "el email de tu compra";
+        var emailText = email || "el email de tu compra";
+        ["thanks-email", "thanks-email-team"].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) el.textContent = emailText;
+        });
+
+        var seatsEl = document.getElementById("thanks-seats");
+        if (seatsEl) seatsEl.textContent = String(seats);
 
         document.querySelectorAll("[data-solo-only]").forEach(function (el) {
-          el.hidden = seats > 1;
+          el.hidden = isTeam;
         });
         document.querySelectorAll("[data-seats-gt1]").forEach(function (el) {
-          if (el.tagName === "SPAN" && seats <= 1) el.hidden = true;
+          el.hidden = !isTeam;
         });
 
         if (email) {
