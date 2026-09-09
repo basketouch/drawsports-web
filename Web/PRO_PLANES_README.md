@@ -14,6 +14,11 @@ La página con planes y precios está en:
 | Español | https://drawsports.app/pro/planes/ |
 | Inglés | https://drawsports.app/pro/planes/en/ |
 
+Tras la compra, el checkout redirige a la página de gracias:
+
+| Español | https://drawsports.app/pro/gracias/ |
+| Inglés | https://drawsports.app/pro/gracias/en/ |
+
 ## Características de "no público"
 
 - **`meta robots="noindex, nofollow"`** → Google no indexa la página

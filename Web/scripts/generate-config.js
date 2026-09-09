@@ -8,9 +8,11 @@
  * Variables:
  *   PADDLE_CLIENT_TOKEN        — client-side token live (Paddle → Authentication)
  *   PADDLE_ENVIRONMENT         — production | sandbox (default: production)
- *   PADDLE_PRICE_DRAWSPORTS_1  — precio de 1 licencia
- *   PADDLE_PRICE_DRAWSPORTS_3  — precio de 3 licencias
- *   PADDLE_PRICE_DRAWSPORTS_5  — precio de 5 licencias
+ *   PADDLE_PRICE_DRAWSPORTS_1     — precio de 1 licencia (89,99 €)
+ *   PADDLE_PRICE_DRAWSPORTS_3     — precio de 3 licencias
+ *   PADDLE_PRICE_DRAWSPORTS_5     — precio de 5 licencias
+ *   PADDLE_PRICE_DRAWSPORTS_ADDON — add-on iPad para clientes CutSports Pro (51 €)
+ *   SUPABASE_URL / SUPABASE_ANON_KEY — elegibilidad add-on
  *
  * Sin token o sin precios, los botones se quedan como consulta por email: la
  * página sigue siendo válida, solo que no vende.
@@ -29,6 +31,9 @@ const precios = {
   3: limpio(process.env.PADDLE_PRICE_DRAWSPORTS_3),
   5: limpio(process.env.PADDLE_PRICE_DRAWSPORTS_5),
 };
+const priceAddon = limpio(process.env.PADDLE_PRICE_DRAWSPORTS_ADDON);
+const supabaseUrl = limpio(process.env.SUPABASE_URL);
+const supabaseAnonKey = limpio(process.env.SUPABASE_ANON_KEY);
 
 const sinToken = !token || /XXXX/i.test(token);
 
@@ -37,6 +42,9 @@ window.DRAWSPORTS_CONFIG = {
   paddleEnvironment: ${JSON.stringify(entorno)},
   paddleClientToken: ${JSON.stringify(sinToken ? "" : token)},
   prices: ${JSON.stringify(precios)},
+  priceAddon: ${JSON.stringify(priceAddon)},
+  supabaseUrl: ${JSON.stringify(supabaseUrl)},
+  supabaseAnonKey: ${JSON.stringify(supabaseAnonKey)},
   panelUrl: "https://panel.drawsports.app/",
   helpEmail: "info@basketouch.com",
 };
