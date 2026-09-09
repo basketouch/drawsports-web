@@ -130,13 +130,17 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
+            min-width: 40px;
             height: 40px;
-            border-radius: 50%;
+            padding: 0 10px;
+            border-radius: 10px;
             background: var(--bg-card);
             border: 2px solid rgba(255,255,255,0.2);
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--text-main);
             transition: all 0.3s;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
@@ -629,9 +633,9 @@
                 right: 10px;
             }
             .language-selector a {
-                width: 35px;
+                min-width: 35px;
                 height: 35px;
-                font-size: 1.3rem;
+                font-size: 0.78rem;
             }
             .container {
                 padding: 0 15px;
@@ -760,8 +764,8 @@
 <body>
 
     <div class="language-selector">
-        <a href="/" class="active" title="Español">🇪🇸</a>
-        <a href="/en" title="English">🇺🇸</a>
+        <a href="/" class="active" title="Español">ES</a>
+        <a href="/en" title="English">EN</a>
     </div>
 
     <header class="container">
