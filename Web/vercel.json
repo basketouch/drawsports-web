@@ -57,7 +57,7 @@
   "outputDirectory": ".",
   "headers": [
     {
-      "source": "/imagenes/(.*\\.(webp|png|jpg|jpeg|svg))",
+      "source": "/imagenes/:path*",
       "headers": [
         {
           "key": "Cache-Control",
