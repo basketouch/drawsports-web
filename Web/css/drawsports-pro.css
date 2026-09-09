@@ -449,11 +449,11 @@
   display: list-item;
 }
 
-/* — Add-on CutSports Pro → DrawSports — */
+/* — Add-on CutSports Pro → DrawSports (compacto) — */
 .addon-offer {
-  max-width: 720px;
-  margin: 0 auto 2.5rem;
-  padding: 0 1.25rem;
+  max-width: 1000px;
+  margin: -1.25rem auto 1.75rem;
+  padding: 0 0.25rem;
 }
 
 .addon-offer[hidden] {
@@ -462,45 +462,82 @@
 
 .addon-offer-card {
   background: var(--bg-card);
-  border: 1px solid var(--accent-glow-strong);
-  border-radius: var(--radius);
-  padding: 1.75rem 1.5rem;
-  text-align: center;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 0.95rem 1.1rem;
+  box-shadow: none;
 }
 
-.addon-offer-card h2 {
-  margin: 0.75rem 0 0.5rem;
-  font-family: var(--font-rounded);
-  font-size: clamp(1.35rem, 3vw, 1.75rem);
+.addon-offer-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
 }
 
-.addon-offer-price {
-  margin: 0 0 0.75rem;
-  font-size: 2rem;
-  font-weight: 800;
+.addon-offer-copy {
+  flex: 1 1 220px;
+  min-width: 0;
+}
+
+.addon-offer-kicker {
+  margin: 0 0 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--accent);
 }
 
-.addon-offer-price small {
+.addon-offer-title {
+  margin: 0;
   font-size: 1rem;
-  font-weight: 500;
-  color: var(--text-muted);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-main, var(--text));
+}
+
+.addon-offer-title strong {
+  color: var(--accent);
+  font-weight: 700;
 }
 
 .addon-offer-lead {
-  margin: 0 0 1.25rem;
+  margin: 0.25rem 0 0;
   color: var(--text-muted);
-  line-height: 1.6;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.addon-offer-cta.plan-btn {
+  width: auto;
+  flex-shrink: 0;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.92rem;
+  white-space: nowrap;
 }
 
 .addon-offer-note {
-  margin: 1rem 0 0;
-  font-size: 0.9rem;
+  margin: 0.65rem 0 0;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.78rem;
   color: var(--text-muted);
-  line-height: 1.55;
+  line-height: 1.45;
 }
 
 .addon-offer-note a {
   color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .addon-offer-main {
+    align-items: stretch;
+  }
+
+  .addon-offer-cta.plan-btn {
+    width: 100%;
+  }
 }

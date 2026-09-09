@@ -400,6 +400,55 @@
         body.ds-modal-abierto { overflow: hidden; }
         .legal-footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
         .legal-footer a:hover { color: #fff; }
+        .addon-offer { max-width: 1000px; margin: -10px auto 28px; }
+        .addon-offer-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-left: 3px solid var(--primary);
+            border-radius: 12px;
+            padding: 14px 16px;
+            text-align: left;
+            box-shadow: none;
+        }
+        .addon-offer-main {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px 18px;
+        }
+        .addon-offer-copy { flex: 1 1 220px; min-width: 0; }
+        .addon-offer-kicker {
+            margin: 0 0 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+        .addon-offer-title { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.35; }
+        .addon-offer-title strong { color: var(--primary); }
+        .addon-offer-lead { margin: 4px 0 0; color: var(--text-muted); font-size: 0.82rem; line-height: 1.45; }
+        .addon-offer-cta.plan-btn {
+            display: inline-block;
+            width: auto;
+            padding: 10px 16px;
+            font-size: 0.92rem;
+            white-space: nowrap;
+        }
+        .addon-offer-note {
+            margin: 10px 0 0;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+        .addon-offer-note a { color: var(--primary); }
+        @media (max-width: 640px) {
+            .addon-offer-main { align-items: stretch; }
+            .addon-offer-cta.plan-btn { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -458,26 +507,28 @@
         </div>
     </section>
 
-    <section class="addon-offer" id="addon-offer">
-        <div class="addon-offer-card">
-            <span class="hero-badge">CutSports Pro + iPad</span>
-            <h2>Añade DrawSports a tu CutSports Pro</h2>
-            <p class="addon-offer-price">51 €<small>/año</small></p>
-            <p class="addon-offer-lead" id="addon-status">
-                Para quien ya tiene CutSports Pro en el Mac y quiere la pizarra en el iPad con el mismo email.
-            </p>
-            <button type="button" class="plan-btn" data-checkout-addon>Añadir DrawSports · 51 €/año</button>
-            <p class="addon-offer-note">
-                ¿Aún no tienes CutSports Pro?
-                <a href="https://cutsports.app/pricing/#pack-pro-drawsports">Prueba el pack Mac + iPad (250 €/año)</a>
-                o elige una licencia DrawSports completa abajo (89,99 €).
-            </p>
-        </div>
-    </section>
-
     <section class="plans-section" id="planes">
         <h2 class="plans-title">Elige tu plan</h2>
         <p class="plans-subtitle">Suscripción anual. Paga una vez al año, sin sorpresas.</p>
+
+        <div class="addon-offer" id="addon-offer">
+            <div class="addon-offer-card">
+                <div class="addon-offer-main">
+                    <div class="addon-offer-copy">
+                        <p class="addon-offer-kicker">¿Ya tienes CutSports Pro?</p>
+                        <p class="addon-offer-title">Añade DrawSports en el iPad · <strong>51 €/año</strong></p>
+                        <p class="addon-offer-lead" id="addon-status">Mismo email en Mac e iPad.</p>
+                    </div>
+                    <button type="button" class="plan-btn addon-offer-cta" data-checkout-addon>Añadir DrawSports</button>
+                </div>
+                <p class="addon-offer-note">
+                    Si no tienes Pro:
+                    <a href="https://cutsports.app/pricing/#pack-pro-drawsports">pack Mac + iPad</a>
+                    o licencia completa abajo.
+                </p>
+            </div>
+        </div>
+
         <div class="plans">
             <div class="plan">
                 <p class="plan-users">1 <span>licencia</span></p>
