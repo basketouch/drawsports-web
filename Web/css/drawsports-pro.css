@@ -375,6 +375,24 @@
   word-break: break-all;
 }
 
+.pro-thanks-callout {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.15rem;
+  border-radius: calc(var(--radius) - 4px);
+  background: rgba(184, 30, 36, 0.1);
+  border: 1px solid rgba(184, 30, 36, 0.28);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.pro-thanks-callout strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
 .pro-thanks-steps-title {
   margin: 0 0 1rem;
   font-size: 0.82rem;
