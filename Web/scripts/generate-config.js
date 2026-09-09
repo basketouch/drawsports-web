@@ -46,7 +46,7 @@ window.DRAWSPORTS_CONFIG = {
   supabaseUrl: ${JSON.stringify(supabaseUrl)},
   supabaseAnonKey: ${JSON.stringify(supabaseAnonKey)},
   panelUrl: "https://panel.drawsports.app/",
-  helpEmail: "info@basketouch.com",
+  helpEmail: "help@basketouch.com",
 };
 `;
 

@@ -50,7 +50,7 @@ En Paddle hay que aprobar el dominio `drawsports.app` (Checkout → Domain appro
 
 Las plazas de cada tramo las declara `paddle_price_catalog.seats` en Supabase, no la
 `quantity` del checkout, porque 3 licencias por 285 € no es 3 x 89,99 €.
-- Plan a medida → mailto info@basketouch.com
+- Plan a medida → mailto help@basketouch.com
 
 ## Cómo publicar cuando esté finalizada
 
