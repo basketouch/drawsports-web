@@ -26,18 +26,18 @@
         addonTitle: "Add DrawSports to your CutSports Pro",
         lead: "Enter the email you will use to sign in to DrawSports. Your licence is tied to it.",
         addonLead:
-          "Enter the same email you use for CutSports Pro on your Mac. We will add DrawSports PRO on iPad.",
+          "Enter the same email you use for CutSports Pro on your Mac. We will add DrawSports on iPad to that licence.",
         email: "Email",
         placeholder: "you@email.com",
         cancel: "Cancel",
         continue: "Continue",
         close: "Close",
         invalid: "Enter a valid email.",
-        checking: "Checking…",
-        addonNoPro: "Requires active CutSports Pro on this email.",
-        addonHasDrawsports: "DrawSports PRO already active on this email.",
-        addonUnavailable: "The add-on is not available yet. Write to help@basketouch.com.",
-        addonError: "Could not verify eligibility. Try again.",
+        checking: "Checking your licence…",
+        addonNoPro: "You need an active CutSports Pro licence with this email.",
+        addonHasDrawsports: "You already have DrawSports PRO with this email.",
+        addonUnavailable: "Write to help@basketouch.com and we will help you.",
+        addonError: "We could not verify your licence. Try again.",
         openPanel: "Open panel",
         packLink: "See Mac + iPad pack",
       }
@@ -46,19 +46,18 @@
         addonTitle: "Añade DrawSports a tu CutSports Pro",
         lead: "Escribe el email con el que entrarás en DrawSports. Tu licencia queda ligada a él.",
         addonLead:
-          "Escribe el mismo email con el que activas CutSports Pro en tu Mac. Añadiremos DrawSports PRO en el iPad.",
+          "Escribe el mismo email con el que activas CutSports Pro en tu Mac. Añadiremos DrawSports en iPad a esa licencia.",
         email: "Email",
         placeholder: "tu@email.com",
         cancel: "Cancelar",
         continue: "Continuar",
         close: "Cerrar",
         invalid: "Introduce un email válido.",
-        checking: "Comprobando…",
-        addonNoPro: "Requiere CutSports Pro activo con este email.",
-        addonHasDrawsports: "DrawSports PRO ya activo en este email.",
-        addonUnavailable:
-          "El add-on aún no está disponible. Escribe a help@basketouch.com.",
-        addonError: "No se pudo comprobar la elegibilidad. Inténtalo de nuevo.",
+        checking: "Comprobando tu licencia…",
+        addonNoPro: "Necesitas CutSports Pro activo con este email.",
+        addonHasDrawsports: "Ya tienes DrawSports PRO con este email.",
+        addonUnavailable: "Escríbenos a help@basketouch.com y te ayudamos.",
+        addonError: "No pudimos comprobar tu licencia. Inténtalo de nuevo.",
         openPanel: "Abrir panel",
         packLink: "Ver pack Mac + iPad",
       };
@@ -302,7 +301,7 @@
 
   if (addonOffer || addonBtn) {
     if (!listoAddon) {
-      mostrarAddonOffer("unavailable");
+      if (addonBtn) addonBtn.disabled = true;
     } else if (emailValido(emailPrevio)) {
       mostrarAddonOffer("checking");
       checkAddonEligibility(emailPrevio)
