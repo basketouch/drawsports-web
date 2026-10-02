@@ -628,6 +628,13 @@
   margin: 0 0 0.25rem;
 }
 
+.plan-price small {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 .plan-period {
   font-size: 0.9rem;
   color: var(--text-muted);
@@ -977,4 +984,3 @@ body.ds-modal-abierto {
     grid-template-columns: 1fr;
   }
 }
-
