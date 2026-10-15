@@ -206,10 +206,13 @@
         Paddle.Checkout.open({
           items: [{ priceId: priceId, quantity: 1 }],
           customer: { email: email },
-          customData: {
-            locale: esEN ? "en" : "es",
-            purchase_context: intentActual === "addon" ? "addon" : "plan",
-          },
+          customData: Object.assign(
+            {
+              locale: esEN ? "en" : "es",
+              purchase_context: intentActual === "addon" ? "addon" : "plan",
+            },
+            window.DrawSportsAttribution ? window.DrawSportsAttribution.get() : {}
+          ),
         });
       })
       .catch(function () {
