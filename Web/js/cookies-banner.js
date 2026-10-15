@@ -10,7 +10,7 @@
   var en = /\/en(\/|$)/.test(window.location.pathname);
   var t = en
     ? {
-        body: "We use technical storage that the site needs and, <strong>only if you accept</strong>, our own anonymous visit measurement (no advertising, no third parties) to learn which campaigns work. Paddle may set its own cookies at checkout. ",
+        body: "We use technical storage and, <strong>if you accept</strong>, we measure visits anonymously to learn which campaigns work. ",
         more: "More information",
         reject: "Reject",
         accept: "Accept",
@@ -18,7 +18,7 @@
         path: "/en/legal/cookies/",
       }
     : {
-        body: "Usamos almacenamiento técnico necesario y, <strong>solo si lo aceptas</strong>, una medición propia y anónima de las visitas (sin publicidad ni terceros) para saber qué campañas funcionan. Paddle puede usar sus propias cookies durante el pago. ",
+        body: "Usamos almacenamiento técnico y, <strong>si aceptas</strong>, medimos las visitas de forma anónima para saber qué campañas funcionan. ",
         more: "Más información",
         reject: "Rechazar",
         accept: "Aceptar",
