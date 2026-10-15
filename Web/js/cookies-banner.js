@@ -10,7 +10,7 @@
   var en = /\/en(\/|$)/.test(window.location.pathname);
   var t = en
     ? {
-        body: "We use technical storage and, <strong>if you accept</strong>, we measure visits anonymously to learn which campaigns work. ",
+        body: "We use cookies to make the site work and, if you accept, to measure visits. ",
         more: "More information",
         reject: "Reject",
         accept: "Accept",
@@ -18,7 +18,7 @@
         path: "/en/legal/cookies/",
       }
     : {
-        body: "Usamos almacenamiento técnico y, <strong>si aceptas</strong>, medimos las visitas de forma anónima para saber qué campañas funcionan. ",
+        body: "Usamos cookies para que la web funcione y, si aceptas, para medir visitas. ",
         more: "Más información",
         reject: "Rechazar",
         accept: "Aceptar",
